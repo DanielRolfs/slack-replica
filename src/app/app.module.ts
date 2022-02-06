@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register/register.component';
 import { PasswordresetComponent } from './login/passwordreset/passwordreset.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,13 +17,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from './chatwindow/menu/menu.component';
-import { ChannelsComponent } from './chatwindow/menu/channels/channels.component';
-import { ChannelComponent } from './chatwindow/menu/channels/channel/channel.component';
-import { DirectMessagesComponent } from './chatwindow/menu/direct-messages/direct-messages.component';
-import { UsersComponent } from './chatwindow/menu/direct-messages/users/users.component';
-import { ChathistoryComponent } from './chatwindow/chathistory/chathistory.component';
-import { ThreadComponent } from './chatwindow/chathistory/thread/thread.component';
+import { UsersComponent } from './chatwindow/menu/menu-tree/users/users.component';
+import { MainChatComponent } from './chatwindow/main-chat/main-chat.component';
+import { ThreadComponent } from './chatwindow/main-chat/thread/thread.component';
 import { ChatwindowComponent } from './chatwindow/chatwindow.component';
+import { MenuTreeComponent } from './chatwindow/menu/menu-tree/menu-tree.component';
+import { MessageSendComponent } from './chatwindow/chatcomponents/message-send/message-send.component';
+import { ChatInputComponent } from './chatwindow/chatcomponents/chat-input/chat-input.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +32,13 @@ import { ChatwindowComponent } from './chatwindow/chatwindow.component';
     RegisterComponent,
     PasswordresetComponent,
     MenuComponent,
-    ChannelsComponent,
-    ChannelComponent,
-    DirectMessagesComponent,
     UsersComponent,
-    ChathistoryComponent,
+    MainChatComponent,
     ThreadComponent,
-    ChatwindowComponent
+    ChatwindowComponent,
+    MenuTreeComponent,
+    MessageSendComponent,
+    ChatInputComponent
   ],
   imports: [
     BrowserModule,

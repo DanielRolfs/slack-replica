@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChathistoryComponent } from './chathistory.component';
+import { MessageSendComponent } from './message-send.component';
 
-describe('ChathistoryComponent', () => {
-  let component: ChathistoryComponent;
-  let fixture: ComponentFixture<ChathistoryComponent>;
+describe('MessageSendComponent', () => {
+  let component: MessageSendComponent;
+  let fixture: ComponentFixture<MessageSendComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChathistoryComponent ]
+      declarations: [ MessageSendComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChathistoryComponent);
+    fixture = TestBed.createComponent(MessageSendComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

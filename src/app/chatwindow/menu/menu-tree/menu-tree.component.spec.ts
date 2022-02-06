@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DirectMessagesComponent } from './direct-messages.component';
+import { MenuTreeComponent } from './menu-tree.component';
 
-describe('DirectMessagesComponent', () => {
-  let component: DirectMessagesComponent;
-  let fixture: ComponentFixture<DirectMessagesComponent>;
+describe('MenuTreeComponent', () => {
+  let component: MenuTreeComponent;
+  let fixture: ComponentFixture<MenuTreeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DirectMessagesComponent ]
+      declarations: [ MenuTreeComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DirectMessagesComponent);
+    fixture = TestBed.createComponent(MenuTreeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
