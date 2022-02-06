@@ -1,19 +1,19 @@
-<div class="bg-black flex flex-col justify-center items-center">
-    <div class="headline">
-        <h1>Sign in to Slack</h1>
-        <span>Continue with email address you use to sign in.</span>
-    </div>
-    <div class="login">
-        <form>
-            <div class="example-container">
-                <mat-form-field appearance="fill">
+<div class="text-white h-screen bg">
+    <div class="flex flex-col justify-center items-center">
+        <div class="flex justify-center items-center flex-col">
+            <h1 class="text-7xl font-medium mt-28 mb-4">Sign in to Slack</h1>
+            <span>Continue with email address you use to sign in.</span>
+        </div>
+        <div class="login">
+            <div class="email">
+                <mat-form-field appearance="outline">
                     <mat-label>Enter your email</mat-label>
-                    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                    <input matInput placeholder="name@work-email.com" [formControl]="email" required>
                     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
             </div>
-            <div class="example-container">
-                <mat-form-field appearance="fill">
+            <div class="password">
+                <mat-form-field appearance="outline">
                     <mat-label>Enter your password</mat-label>
                     <input matInput [type]="hide ? 'password' : 'text'">
                     <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
@@ -22,10 +22,10 @@
                     </button>
                 </mat-form-field>
             </div>
-        </form>
-    </div>
-    <div class="btns">
-        <button>Login</button>
-        <a href="#">Register</a>
+        </div>
+        <div class="btns">
+            <button>Login</button>
+            <a href="#">Register</a>
+        </div>
     </div>
 </div>

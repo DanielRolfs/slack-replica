@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'You must enter an email';
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
