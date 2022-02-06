@@ -17,6 +17,8 @@ import { ChannelsComponent } from './chatwindow/menu/channels/channels.component
 import { ChannelComponent } from './chatwindow/menu/channels/channel/channel.component';
 import { DirectMessagesComponent } from './chatwindow/menu/direct-messages/direct-messages.component';
 import { UsersComponent } from './chatwindow/menu/direct-messages/users/users.component';
+import { ChathistoryComponent } from './chatwindow/chathistory/chathistory.component';
+import { ThreadComponent } from './chatwindow/chathistory/thread/thread.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { UsersComponent } from './chatwindow/menu/direct-messages/users/users.co
     ChannelsComponent,
     ChannelComponent,
     DirectMessagesComponent,
-    UsersComponent
+    UsersComponent,
+    ChathistoryComponent,
+    ThreadComponent
   ],
   imports: [
     BrowserModule,
