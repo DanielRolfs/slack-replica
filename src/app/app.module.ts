@@ -17,13 +17,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from './chatwindow/menu/menu.component';
-import { ChannelsComponent } from './chatwindow/menu/channels/channels.component';
-import { ChannelComponent } from './chatwindow/menu/channels/channel/channel.component';
-import { DirectMessagesComponent } from './chatwindow/menu/direct-messages/direct-messages.component';
-import { UsersComponent } from './chatwindow/menu/direct-messages/users/users.component';
+import { UsersComponent } from './chatwindow/menu/menu-tree/users/users.component';
 import { ChathistoryComponent } from './chatwindow/chathistory/chathistory.component';
 import { ThreadComponent } from './chatwindow/chathistory/thread/thread.component';
 import { ChatwindowComponent } from './chatwindow/chatwindow.component';
+import { MenuTreeComponent } from './chatwindow/menu/menu-tree/menu-tree.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +30,11 @@ import { ChatwindowComponent } from './chatwindow/chatwindow.component';
     RegisterComponent,
     PasswordresetComponent,
     MenuComponent,
-    ChannelsComponent,
-    ChannelComponent,
-    DirectMessagesComponent,
     UsersComponent,
     ChathistoryComponent,
     ThreadComponent,
-    ChatwindowComponent
+    ChatwindowComponent,
+    MenuTreeComponent
   ],
   imports: [
     BrowserModule,
