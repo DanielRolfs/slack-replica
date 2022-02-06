@@ -1,0 +1,103 @@
+/* For use in src/lib/core/theming/_palette.scss */
+$custom-primary: (
+    50 : #e4e3e4,
+    100 : #bab9bb,
+    200 : #8d8b8e,
+    300 : #5f5d60,
+    400 : #3c3a3e,
+    500 : #1a171c,
+    600 : #171419,
+    700 : #131114,
+    800 : #0f0d11,
+    900 : #080709,
+    A100 : #5151ff,
+    A200 : #1e1eff,
+    A400 : #0000ea,
+    A700 : #0000d0,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #ffffff,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+$custom-accent: (
+    50 : #f9fafa,
+    100 : #f1f2f2,
+    200 : #e8e9e9,
+    300 : #dfe0e0,
+    400 : #d8d9da,
+    500 : #d1d2d3,
+    600 : #cccdce,
+    700 : #c6c7c8,
+    800 : #c0c1c2,
+    900 : #b5b6b7,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #f2f6ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$custom-warn: (
+    50 : #e2ecf4,
+    100 : #b8d1e3,
+    200 : #88b2d1,
+    300 : #5893bf,
+    400 : #357bb1,
+    500 : #1164a3,
+    600 : #0f5c9b,
+    700 : #0c5291,
+    800 : #0a4888,
+    900 : #053677,
+    A100 : #a6c7ff,
+    A200 : #73a6ff,
+    A400 : #4086ff,
+    A700 : #2676ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
