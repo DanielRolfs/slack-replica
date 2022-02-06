@@ -9,7 +9,6 @@ import { PasswordresetComponent } from './login/passwordreset/passwordreset.comp
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-<<<<<<< HEAD
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
@@ -17,10 +16,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-=======
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideStorage,getStorage } from '@angular/fire/storage';
 import { MenuComponent } from './chatwindow/menu/menu.component';
 import { ChannelsComponent } from './chatwindow/menu/channels/channels.component';
 import { ChannelComponent } from './chatwindow/menu/channels/channel/channel.component';
@@ -29,7 +24,6 @@ import { UsersComponent } from './chatwindow/menu/direct-messages/users/users.co
 import { ChathistoryComponent } from './chatwindow/chathistory/chathistory.component';
 import { ThreadComponent } from './chatwindow/chathistory/thread/thread.component';
 import { ChatwindowComponent } from './chatwindow/chatwindow/chatwindow.component';
->>>>>>> 05491716490160e4fb1ee32a7ef7c1837d9f0204
 
 @NgModule({
   declarations: [
