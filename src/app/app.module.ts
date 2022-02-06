@@ -24,8 +24,13 @@ import { ChatwindowComponent } from './chatwindow/chatwindow.component';
 import { MenuTreeComponent } from './chatwindow/menu/menu-tree/menu-tree.component';
 import { MessageSendComponent } from './chatwindow/chatcomponents/message-send/message-send.component';
 import { ChatInputComponent } from './chatwindow/chatcomponents/chat-input/chat-input.component';
+<<<<<<< HEAD
 import { DialogComponent } from './dialog/dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+=======
+
+
+>>>>>>> 76b8efac3d7ba69321a2a05b2bb50a66c085b584
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +44,7 @@ import { MatButtonModule } from '@angular/material/button';
     ChatwindowComponent,
     MenuTreeComponent,
     MessageSendComponent,
-    ChatInputComponent,
-    DialogComponent
+    ChatInputComponent
   ],
   imports: [
     BrowserModule,
