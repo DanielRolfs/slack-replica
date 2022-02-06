@@ -22,6 +22,8 @@ import { MainChatComponent } from './chatwindow/main-chat/main-chat.component';
 import { ThreadComponent } from './chatwindow/main-chat/thread/thread.component';
 import { ChatwindowComponent } from './chatwindow/chatwindow.component';
 import { MenuTreeComponent } from './chatwindow/menu/menu-tree/menu-tree.component';
+import { MessageSendComponent } from './chatwindow/chatcomponents/message-send/message-send.component';
+import { ChatInputComponent } from './chatwindow/chatcomponents/chat-input/chat-input.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { MenuTreeComponent } from './chatwindow/menu/menu-tree/menu-tree.compone
     MainChatComponent,
     ThreadComponent,
     ChatwindowComponent,
-    MenuTreeComponent
+    MenuTreeComponent,
+    MessageSendComponent,
+    ChatInputComponent
   ],
   imports: [
     BrowserModule,
