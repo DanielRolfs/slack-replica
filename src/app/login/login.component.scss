@@ -1,18 +1,24 @@
 .bg {
-    background-color: #1a171c;
+  background-color: #252521;
 }
 
-.mat-form-field-appearance-outline .mat-form-field-outline-thick {
-    color: white;
-}
-
-.mat-form-field-appearance-outline .mat-form-field-outline {
-    color: white;
-}
-
-.password:focus {
-    border-color: white;
-}
-.mat-form-field-label {
+::placeholder {
     color: white !important;
 }
+
+.login {
+    margin-bottom: 1rem;
+    background-color: #46253E;
+    width: 25rem;
+    color: white;
+}
+.mat-form-field-outline {
+    color: white !important;
+} 
+.ng-tns-c71-0 {
+    color: white !important;
+}
+.ng-star-inserted {
+    color: white !important;
+}
+

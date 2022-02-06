@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
 
   }
 
+  login() {
+    
+  }
+
 
   getErrorMessage() {
     if (this.email.hasError('required')) {

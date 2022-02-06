@@ -25,7 +25,7 @@ import { MenuTreeComponent } from './chatwindow/menu/menu-tree/menu-tree.compone
 import { MessageSendComponent } from './chatwindow/chatcomponents/message-send/message-send.component';
 import { ChatInputComponent } from './chatwindow/chatcomponents/chat-input/chat-input.component';
 import { DialogComponent } from './dialog/dialog.component';
-
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +53,8 @@ import { DialogComponent } from './dialog/dialog.component';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
