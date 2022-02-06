@@ -23,7 +23,7 @@ import { DirectMessagesComponent } from './chatwindow/menu/direct-messages/direc
 import { UsersComponent } from './chatwindow/menu/direct-messages/users/users.component';
 import { ChathistoryComponent } from './chatwindow/chathistory/chathistory.component';
 import { ThreadComponent } from './chatwindow/chathistory/thread/thread.component';
-import { ChatwindowComponent } from './chatwindow/chatwindow/chatwindow.component';
+import { ChatwindowComponent } from './chatwindow/chatwindow.component';
 
 @NgModule({
   declarations: [
