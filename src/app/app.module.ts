@@ -18,8 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from './chatwindow/menu/menu.component';
 import { UsersComponent } from './chatwindow/menu/menu-tree/users/users.component';
-import { ChathistoryComponent } from './chatwindow/chathistory/chathistory.component';
-import { ThreadComponent } from './chatwindow/chathistory/thread/thread.component';
+import { MainChatComponent } from './chatwindow/main-chat/main-chat.component';
+import { ThreadComponent } from './chatwindow/main-chat/thread/thread.component';
 import { ChatwindowComponent } from './chatwindow/chatwindow.component';
 import { MenuTreeComponent } from './chatwindow/menu/menu-tree/menu-tree.component';
 
@@ -31,7 +31,7 @@ import { MenuTreeComponent } from './chatwindow/menu/menu-tree/menu-tree.compone
     PasswordresetComponent,
     MenuComponent,
     UsersComponent,
-    ChathistoryComponent,
+    MainChatComponent,
     ThreadComponent,
     ChatwindowComponent,
     MenuTreeComponent
