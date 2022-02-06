@@ -24,7 +24,7 @@ import { ChatwindowComponent } from './chatwindow/chatwindow.component';
 import { MenuTreeComponent } from './chatwindow/menu/menu-tree/menu-tree.component';
 import { MessageSendComponent } from './chatwindow/chatcomponents/message-send/message-send.component';
 import { ChatInputComponent } from './chatwindow/chatcomponents/chat-input/chat-input.component';
-import { DialogComponent } from './dialog/dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -39,8 +39,7 @@ import { DialogComponent } from './dialog/dialog.component';
     ChatwindowComponent,
     MenuTreeComponent,
     MessageSendComponent,
-    ChatInputComponent,
-    DialogComponent
+    ChatInputComponent
   ],
   imports: [
     BrowserModule,
