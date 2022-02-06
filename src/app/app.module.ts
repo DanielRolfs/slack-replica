@@ -12,13 +12,23 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { MenuComponent } from './chatwindow/menu/menu.component';
+import { ChannelsComponent } from './chatwindow/menu/channels/channels.component';
+import { ChannelComponent } from './chatwindow/menu/channels/channel/channel.component';
+import { DirectMessagesComponent } from './chatwindow/menu/direct-messages/direct-messages.component';
+import { UsersComponent } from './chatwindow/menu/direct-messages/users/users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    PasswordresetComponent
+    PasswordresetComponent,
+    MenuComponent,
+    ChannelsComponent,
+    ChannelComponent,
+    DirectMessagesComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
