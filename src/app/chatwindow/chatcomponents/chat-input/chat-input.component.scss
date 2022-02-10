@@ -4,10 +4,36 @@ mat-form-field {
 
 ::placeholder {
     color: #707173;
+    text-align: center;
+    text-align: left;
+    padding-top: 2rem;
+    padding-left: 0.5rem;
 }
 
 textarea {
     resize: none !important;
     border: 1px solid rgb(85, 88, 86);
     background-color: #222529;
+}
+
+.send {
+    color: #55595c;
+
+    &:hover {
+        color: white;
+        background-color: green;
+        cursor: pointer;
+        border-radius: 0.3rem;
+    }
+}
+
+.bold {
+    color: #4A4E51;
+
+    &:hover {
+        color: #434647;
+        background-color: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        border-radius: 0.3rem;
+    }
 }
