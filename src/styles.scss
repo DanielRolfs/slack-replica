@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -9,7 +8,7 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
-@import '/src/custom-colors.scss';
+@import "/src/custom-colors.scss";
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -22,13 +21,15 @@ $slack-replica-warn: mat.define-palette($custom-warn);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$slack-replica-theme: mat.define-light-theme((
-  color: (
-    primary: $slack-replica-primary,
-    accent: $slack-replica-accent,
-    warn: $slack-replica-warn,
+$slack-replica-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $slack-replica-primary,
+      accent: $slack-replica-accent,
+      warn: $slack-replica-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -37,12 +38,21 @@ $slack-replica-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
+
+<<<<<<< HEAD
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
@@ -55,3 +65,5 @@ body {
 .primary-background {
   background-color: var(--primary);
 }
+=======
+>>>>>>> 911d177d164d5239f68ad3c624e776100b44473d
