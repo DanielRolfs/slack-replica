@@ -46,12 +46,17 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Slack-Lato, appleLogo, sans-serif;
+}
+body {
+  --primary: #1a171c;
+  --secondary: ;
+  --primary-foreground: rgb(209, 210, 211); // font-color
 }
 
 .primary-background {
   background-color: var(--primary);
 }
-
