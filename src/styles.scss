@@ -52,6 +52,11 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+body {
+  --primary: #1a171c;
+  --secondary: ;
+}
+
 .primary-background {
   background-color: var(--primary);
 }
