@@ -1,24 +1,59 @@
 .bg {
-  background-color: #252521;
+    background-color: #252521;
 }
 
 ::placeholder {
-    color: white !important;
+    color: #ffffe233;
+}
+
+input:focus {
+    border: 0.1rem solid rgb(255, 255, 226) !important;
+
+    &::placeholder {
+        color: #ffffe2;
+    }
+}
+
+span {
+    color: #ffffe2;
+}
+
+input {
+    border-color: #ffffe2;
+    border: 0.1rem solid #ffffe233;
+    color: #ffffe2;
+    width: 20rem;
+}
+
+.password-field {
+    position: relative;
+}
+
+mat-icon {
+    position: absolute;
+    right: 0.3rem;
+    top: 0.6rem;
+    color: #ffffe233;
 }
 
 .login {
     margin-bottom: 1rem;
-    background-color: #46253E;
+    background-color: #46253e;
     width: 25rem;
-    color: white;
-}
-.mat-form-field-outline {
-    color: white !important;
-} 
-.ng-tns-c71-0 {
-    color: white !important;
-}
-.ng-star-inserted {
-    color: white !important;
-}
+    color: #ffffff;
 
+    &:hover {
+        background-color: #382132;
+    }
+}
+// .ng-star-inserted {
+//     color: #807d72 !important;
+// }
+
+// .mat-form-field-appearance-outline .mat-form-field-outline {
+//     color: white !important;
+// }
+
+// .mat-input-element {
+//     caret-color: white;
+// }

@@ -8,7 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  // email = new FormControl('', [Validators.required, Validators.email]);
 
   hide = true;
 
@@ -24,11 +24,11 @@ export class LoginComponent implements OnInit {
   }
 
 
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter an email';
-    }
+  // getErrorMessage() {
+  //   if (this.email.hasError('required')) {
+  //     return 'You must enter an email';
+  //   }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
+  //   return this.email.hasError('email') ? 'Not a valid email' : '';
+  // }
 }

@@ -4,23 +4,28 @@
             <h1 class="text-7xl font-medium mt-28 mb-4">Sign in to Slack</h1>
             <span>Continue with email address you use to sign in.</span>
         </div>
-        <div class="mt-20 w-3/12">
-            <div class="email">
-                <mat-form-field appearance="outline" class="w-full">
+        <div class="mt-20 w-3/12 flex flex-col items-center">
+            <div>
+                <input type="email" class="email h-12 p-4 mb-4 rounded-md bg-transparent"
+                    placeholder="name@work-email.com" required>
+                <!-- <mat-form-field appearance="outline" class="w-full">
                     <mat-label>Enter your email</mat-label>
                     <input class="w-3/6" matInput placeholder="name@work-email.com" [formControl]="email" required>
                     <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-                </mat-form-field>
+                </mat-form-field> -->
             </div>
-            <div class="password">
-                <mat-form-field appearance="outline" class="w-full">
-                    <mat-label>Enter your password</mat-label>
-                    <input class="password" matInput [type]="hide ? 'password' : 'text'">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                        [attr.aria-pressed]="hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                </mat-form-field>
+            <div class="password-field">
+                <input type="password" [type]="hide ? 'password' : 'text'"
+                    class="password h-12 p-4 mb-4 rounded-md bg-transparent" placeholder="Please enter password"
+                    required>
+                <!-- <mat-form-field appearance="outline" class="w-full">
+                    <mat-label>Enter your password</mat-label> -->
+                <!-- <input class="password" matInput [type]="hide ? 'password' : 'text'"> -->
+                <button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <!-- </mat-form-field> -->
             </div>
         </div>
         <div class="flex flex-col items-center">

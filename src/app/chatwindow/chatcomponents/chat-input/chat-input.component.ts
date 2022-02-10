@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatInputComponent implements OnInit {
 
+
+somePlaceholder: string = 'new Value';
   constructor() { }
 
   ngOnInit(): void {
