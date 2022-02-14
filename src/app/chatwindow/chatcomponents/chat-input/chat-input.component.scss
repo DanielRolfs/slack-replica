@@ -12,8 +12,20 @@ mat-form-field {
 
 textarea {
     resize: none !important;
-    border: 1px solid rgb(85, 88, 86);
+    border: 1px solid #555856;
     background-color: #222529;
+    text-anchor: middle;
+    
+
+    :focus {
+        .bold .send .italic {
+            color: white;
+        }
+
+        ::placeholder {
+            color: white;
+        }
+    }
 }
 
 .send {
@@ -28,7 +40,18 @@ textarea {
 }
 
 .bold {
-    color: #4A4E51;
+    color: #4a4e51;
+
+    &:hover {
+        color: #434647;
+        background-color: rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        border-radius: 0.3rem;
+    }
+}
+
+.italic {
+    color: #4a4e51;
 
     &:hover {
         color: #434647;
