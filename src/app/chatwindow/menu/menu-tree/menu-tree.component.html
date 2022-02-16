@@ -10,6 +10,7 @@
         <!-- Visible Parent Node -->
         <div class="mat-tree-node">
 
+            <!-- Btn: Arrow-icon for toggle -->
             <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
                 <mat-icon class="mat-icon-rtl-mirror">
                     {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
@@ -17,6 +18,11 @@
             </button>
 
             <button matTreeNodeToggle>{{node.name}}</button>
+
+            <!-- Btn: For creating new channels/dms -->
+            <button class="btn-create" mat-icon-button>
+                <mat-icon> add </mat-icon>
+            </button>
 
         </div>
 
