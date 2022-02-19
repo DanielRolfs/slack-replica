@@ -55,8 +55,13 @@ body {
   --primary: #1a171c;
   --secondary: ;
   --primary-foreground: rgb(209, 210, 211); // font-color
+  --text: #D1D2D3;
 }
 
 .primary-background {
   background-color: var(--primary);
+}
+
+.text-color {
+  color: var(--text);
 }
