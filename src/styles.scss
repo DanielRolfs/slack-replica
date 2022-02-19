@@ -45,6 +45,12 @@ $slack-replica-theme: mat.define-light-theme(
 html,
 body {
   height: 100%;
+  line-height: 1;
+}
+
+h2 {
+  margin-block-start: 0;
+  font-size: 1.2rem;
 }
 
 body {
@@ -55,8 +61,18 @@ body {
   --primary: #1a171c;
   --secondary: ;
   --primary-foreground: rgb(209, 210, 211); // font-color
+  --text: #D1D2D3;
+  --accent: #1164a3;
 }
 
 .primary-background {
   background-color: var(--primary);
+}
+
+.text-color {
+  color: var(--text);
+}
+
+.text-color-accent {
+  color: var(--accent);
 }
