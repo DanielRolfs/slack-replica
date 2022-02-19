@@ -12,12 +12,11 @@ mat-form-field {
 
 textarea {
     resize: none !important;
-    border: 1px solid #555856;
-    background-color: #222529;
-    text-anchor: middle;
-    
+    // border-top: transparent;
 
     :focus {
+        border-color: unset;
+
         .bold .send .italic {
             color: white;
         }
