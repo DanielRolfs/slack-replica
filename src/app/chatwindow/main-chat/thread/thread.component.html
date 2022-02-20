@@ -1,16 +1,20 @@
 <div class="bg-[#191D21] border-l-[#2B2A2F] border-l flex flex-col w-[350px] h-screen">
     <div class="border-b border-[#2B2A2F] h-12 flex justify-start items-center pl-4">
-        <span class="h-5 slack-font text-lg text-[#D1D2D3] text-ellipsis flex justify-start items-center">Thread</span>
+        <span class="h-5 slack-font text-lg text-color text-ellipsis flex justify-start items-center">Thread</span>
 
     </div>
 
     <div class="flex-1"></div>
 
-    <div class="flex justify-center mb-10">
+    <div class="flex flex-col mb-10 border border-solid border-[#555856] bg-[#222529] rounded-md mx-6 h-28">
+        <div>
+            <mat-icon class="bold">format_bold</mat-icon>
+            <mat-icon class="italic-format">format_italic</mat-icon>
+            <mat-icon class="code">integration_instructions</mat-icon>
+        </div>
 
-        <textarea class="border h-24 rounded-md bg-[#222529] border-[#555856]" matInput placeholder="Antworten..."></textarea>
-        <!-- <mat-icon class="bold absolute left-3.5 top-1">format_bold</mat-icon>
-        <mat-icon class="italic absolute left-8 top-1">format_italic</mat-icon>
-        <mat-icon class="send absolute right-6 bottom-1">send</mat-icon> -->
+        <textarea class="h-12 w-11/12 bg-[#222529] text-color" matInput placeholder="Antworten ..."></textarea>
+
+        <mat-icon class="send flex self-end mr-2">send</mat-icon>
     </div>
 </div>

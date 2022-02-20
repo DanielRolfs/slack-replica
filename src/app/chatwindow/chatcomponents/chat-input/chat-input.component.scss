@@ -13,15 +13,6 @@ textarea {
     border: none;
     overflow: auto;
     resize: none !important;
-    // border-top: transparent
-
-    .bold .send .italic {
-        color: white;
-    }
-
-    ::placeholder {
-        color: white;
-    }
 }
 
 .send {
@@ -39,7 +30,7 @@ textarea {
     color: #4a4e51;
 
     &:hover {
-        color: #434647;
+        color: white;
         background-color: rgba(255, 255, 255, 0.2);
         cursor: pointer;
         border-radius: 0.3rem;
@@ -50,8 +41,8 @@ textarea {
     color: #4a4e51;
 
     &:hover {
-        color: #434647;
-        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+        background-color: #ffffff33;
         cursor: pointer;
         border-radius: 0.3rem;
     }
@@ -61,7 +52,7 @@ textarea {
     color: #4a4e51;
 
     &:hover {
-        color: #434647;
+        color: white;
         background-color: rgba(255, 255, 255, 0.2);
         cursor: pointer;
         border-radius: 0.3rem;
