@@ -1,7 +1,11 @@
 <div #chatwindow class="flex flex-row">
     <div class="w-64"><app-menu></app-menu></div>
-    <div class="flex-1 relative main-chat"><app-main-chat></app-main-chat></div>
+    <div class="main-chat w-3/4">
+        <app-main-chat></app-main-chat>
+    </div>
     
     <!-- the-thread-component is commented out -->
-    <div class="w-1/5"><app-thread></app-thread></div>
+    <div>
+        <app-thread></app-thread>
+    </div>
 </div>
