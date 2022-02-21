@@ -12,17 +12,17 @@ interface TreeNode {
 
 const TREE_DATA: TreeNode[] = [
   {
-    name: 'Channels',
-    children: [{ name: '#JavaScript' }, { name: '#TypeScript' }, { name: '#Angular' }, { name: '#Memes' }],
+    name: 'Directmessages',
+    children: [{ name: 'Niklas' }, { name: 'Daniel' }, { name: 'Mikail' }, { name: 'Mihai' }],
   },
 ];
 
 @Component({
-  selector: 'app-menu-tree',
-  templateUrl: './menu-tree.component.html',
-  styleUrls: ['./menu-tree.component.scss']
+  selector: 'app-menu-tree-two',
+  templateUrl: './menu-tree-two.component.html',
+  styleUrls: ['./menu-tree-two.component.scss']
 })
-export class MenuTreeComponent implements OnInit {
+export class MenuTreeTwoComponent implements OnInit {
 
   treeControl = new NestedTreeControl<TreeNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<TreeNode>();

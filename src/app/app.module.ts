@@ -28,6 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTreeModule } from '@angular/material/tree';
 import { DialogAddChannelComponent } from './dialog-windows/dialog-add-channel/dialog-add-channel.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MenuTreeTwoComponent } from './chatwindow/menu/menu-tree-two/menu-tree-two.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MenuTreeComponent,
     MessageSendComponent,
     ChatInputComponent,
-    DialogAddChannelComponent
+    DialogAddChannelComponent,
+    MenuTreeTwoComponent
   ],
   imports: [
     BrowserModule,
