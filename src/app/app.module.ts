@@ -14,7 +14,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from './chatwindow/menu/menu.component';
 import { UsersComponent } from './chatwindow/menu/menu-tree/users/users.component';
@@ -62,7 +62,8 @@ import { MenuTreeTwoComponent } from './chatwindow/menu/menu-tree-two/menu-tree-
     MatIconModule,
     MatButtonModule,
     MatTreeModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

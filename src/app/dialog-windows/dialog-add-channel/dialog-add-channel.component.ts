@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog-add-channel.component.scss']
 })
 export class DialogAddChannelComponent implements OnInit {
-
+  name: string = '';
   constructor() { }
 
   ngOnInit(): void {
