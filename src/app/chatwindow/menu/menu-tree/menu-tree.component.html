@@ -20,7 +20,7 @@
             <button matTreeNodeToggle>{{node.name}}</button>
 
             <!-- Btn: For creating new channels/dms -->
-            <button class="btn-create" mat-icon-button>
+            <button class="btn-create" mat-icon-button (click)="openDialogCreateNewChannel()">
                 <mat-icon> add </mat-icon>
             </button>
 
