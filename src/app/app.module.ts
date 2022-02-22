@@ -29,6 +29,9 @@ import { MatTreeModule } from '@angular/material/tree';
 import { DialogAddChannelComponent } from './dialog-windows/dialog-add-channel/dialog-add-channel.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MenuTreeTwoComponent } from './chatwindow/menu/menu-tree-two/menu-tree-two.component';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+
 
 
 @NgModule({
@@ -52,6 +55,7 @@ import { MenuTreeTwoComponent } from './chatwindow/menu/menu-tree-two/menu-tree-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -63,7 +67,7 @@ import { MenuTreeTwoComponent } from './chatwindow/menu/menu-tree-two/menu-tree-
     MatButtonModule,
     MatTreeModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
