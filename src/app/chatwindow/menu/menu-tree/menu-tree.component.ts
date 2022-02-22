@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddChannelComponent } from 'src/app/dialog-windows/dialog-add-channel/dialog-add-channel.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Channel } from 'src/app/models/channel.class';
 
 interface TreeNode {
   name: string;
@@ -25,10 +26,12 @@ const TREE_DATA: TreeNode[] = [
 })
 export class MenuTreeComponent implements OnInit {
 
+
+
   treeControl = new NestedTreeControl<TreeNode>(node => node.children);
   dataSource = new MatTreeNestedDataSource<TreeNode>();
 
-  constructor(private router: Router, public dialog: MatDialog, private firestore: AngularFirestore) { }
+  constructor(private router: Router, public dialog: MatDialog, private firestore: AngularFirestore) {   }
 
   ngOnInit(): void {
     this.dataSource.data = TREE_DATA;
@@ -47,8 +50,8 @@ export class MenuTreeComponent implements OnInit {
   openDialogCreateNewChannel(): void {
     const dialogRef = this.dialog.open(DialogAddChannelComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(ChannelName => {
+      
     });
 
   }

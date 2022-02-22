@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Channel } from 'src/app/models/channel.class';
 
 @Component({
   selector: 'app-dialog-add-channel',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogAddChannelComponent implements OnInit {
   name: string = '';
+
+  channel = new Channel();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  createChannel(){
+    console.log('Created Channel is', this.channel)
   }
 
 }

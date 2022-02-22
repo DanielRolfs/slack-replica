@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>Create a channel</h1>
 <div mat-dialog-content>
-  <p>Name</p>
+  <p>Channel Name</p>
   <mat-form-field appearance="fill">
-    <input matInput [(ngModel)]="name">
+    <input matInput [(ngModel)]="channel.channelName">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="" cdkFocusInitial>Create</button>
+  <button mat-button (click)="createChannel()" cdkFocusInitial>Create</button>
 </div>
