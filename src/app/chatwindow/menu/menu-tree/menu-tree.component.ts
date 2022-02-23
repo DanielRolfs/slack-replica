@@ -25,22 +25,28 @@ const TREE_DATA: TreeNode[] = [
   styleUrls: ['./menu-tree.component.scss']
 })
 export class MenuTreeComponent implements OnInit {
-
+  channel = new Channel();
+  allChannel :any = [];
 
 
   treeControl = new NestedTreeControl<TreeNode>(node => node.children);
-  dataSource = new MatTreeNestedDataSource<TreeNode>();
+  dataSource: any; 
 
   constructor(private router: Router, public dialog: MatDialog, private firestore: AngularFirestore) {   }
 
   ngOnInit(): void {
-    this.dataSource.data = TREE_DATA;
+   
     this
       .firestore
       .collection('channels')
       .valueChanges()
-      .subscribe((channel) =>{
+      .subscribe((channel: any) =>{
         console.log('Channel', channel);
+        this.dataSource = new MatTreeNestedDataSource<TreeNode>();
+        TREE_DATA[0].children = channel;
+        this.dataSource.data = TREE_DATA;
+        console.log(this.dataSource.data);
+
       });
   }
 
@@ -50,7 +56,7 @@ export class MenuTreeComponent implements OnInit {
   openDialogCreateNewChannel(): void {
     const dialogRef = this.dialog.open(DialogAddChannelComponent);
 
-    dialogRef.afterClosed().subscribe(ChannelName => {
+    dialogRef.afterClosed().subscribe(name => {
       
     });
 

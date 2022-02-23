@@ -1,13 +1,13 @@
 export class Channel {
-    channelName: string;
+    name: string;
 
     constructor(obj?: any) {
-        this.channelName = obj ? obj.channelName : '';
+        this.name = obj ? obj.name : '';
     }
 
     public toJSON() {
         return {
-            channelName: this.channelName,
+            name: this.name,
         }
     }
 
