@@ -17,20 +17,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from './chatwindow/menu/menu.component';
-import { UsersComponent } from './chatwindow/menu/menu-tree/users/users.component';
 import { MainChatComponent } from './chatwindow/main-chat/main-chat.component';
 import { ThreadComponent } from './chatwindow/main-chat/thread/thread.component';
 import { ChatwindowComponent } from './chatwindow/chatwindow.component';
-import { MenuTreeComponent } from './chatwindow/menu/menu-tree/menu-tree.component';
 import { MessageSendComponent } from './chatwindow/chatcomponents/message-send/message-send.component';
 import { ChatInputComponent } from './chatwindow/chatcomponents/chat-input/chat-input.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTreeModule } from '@angular/material/tree';
 import { DialogAddChannelComponent } from './dialog-windows/dialog-add-channel/dialog-add-channel.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { MenuTreeTwoComponent } from './chatwindow/menu/menu-tree-two/menu-tree-two.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { TreeInstanceComponent } from './chatwindow/menu/tree-instance/tree-instance.component';
 
 
 
@@ -41,15 +39,13 @@ import { AngularFireModule } from '@angular/fire/compat';
     RegisterComponent,
     PasswordresetComponent,
     MenuComponent,
-    UsersComponent,
     MainChatComponent,
     ThreadComponent,
     ChatwindowComponent,
-    MenuTreeComponent,
     MessageSendComponent,
     ChatInputComponent,
     DialogAddChannelComponent,
-    MenuTreeTwoComponent
+    TreeInstanceComponent,
   ],
   imports: [
     BrowserModule,

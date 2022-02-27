@@ -1,0 +1,9 @@
+.container{
+    &:hover #btn-create{
+        display: unset !important;
+    }
+}
+
+.tree-invisible {
+    display: none;
+}
