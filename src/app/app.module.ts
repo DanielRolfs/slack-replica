@@ -27,10 +27,10 @@ import { ChatInputComponent } from './chatwindow/chatcomponents/chat-input/chat-
 import { MatButtonModule } from '@angular/material/button';
 import { MatTreeModule } from '@angular/material/tree';
 import { DialogAddChannelComponent } from './dialog-windows/dialog-add-channel/dialog-add-channel.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MenuTreeTwoComponent } from './chatwindow/menu/menu-tree-two/menu-tree-two.component';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+
 
 
 

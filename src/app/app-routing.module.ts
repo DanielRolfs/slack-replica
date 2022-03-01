@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'passwordreset', component: PasswordresetComponent },
-  { path: 'chatwindow', component: ChatwindowComponent },
+  { path: 'chatwindow/:id', component: ChatwindowComponent },
 ];
 
 @NgModule({
