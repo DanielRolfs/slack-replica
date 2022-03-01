@@ -25,13 +25,7 @@ import { ChatInputComponent } from './chatwindow/chatcomponents/chat-input/chat-
 import { MatButtonModule } from '@angular/material/button';
 import { MatTreeModule } from '@angular/material/tree';
 import { DialogAddChannelComponent } from './dialog-windows/dialog-add-channel/dialog-add-channel.component';
-<<<<<<< HEAD
-import { MatDialogModule } from '@angular/material/dialog';
-import { MenuTreeTwoComponent } from './chatwindow/menu/menu-tree-two/menu-tree-two.component';
-=======
 import {MatDialogModule} from '@angular/material/dialog';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
->>>>>>> 5381a8a5694e24dab579839e57ed6ad0e144a211
 import { AngularFireModule } from '@angular/fire/compat';
 import { TreeInstanceComponent } from './chatwindow/menu/tree-instance/tree-instance.component';
 

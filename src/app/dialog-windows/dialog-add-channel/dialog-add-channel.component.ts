@@ -28,7 +28,10 @@ export class DialogAddChannelComponent implements OnInit {
       .then((result: any) => {
         console.log('Adding channel finished', result);
       });
+    setTimeout(() => {
       this.closeDialog();
+    }, 1000);
+
   }
 
   closeDialog() {
