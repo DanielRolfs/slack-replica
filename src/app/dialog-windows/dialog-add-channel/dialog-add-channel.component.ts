@@ -29,12 +29,10 @@ export class DialogAddChannelComponent implements OnInit {
         console.log('Adding channel finished', result);
       });
       this.closeDialog();
-
   }
 
   closeDialog() {
     this.dialogRef.close();
-    window.location.reload();
   }
 
 }

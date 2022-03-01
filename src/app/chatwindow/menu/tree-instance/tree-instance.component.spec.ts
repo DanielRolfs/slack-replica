@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MenuTreeComponent } from './menu-tree.component';
+import { TreeInstanceComponent } from './tree-instance.component';
 
-describe('MenuTreeComponent', () => {
-  let component: MenuTreeComponent;
-  let fixture: ComponentFixture<MenuTreeComponent>;
+describe('TreeInstanceComponent', () => {
+  let component: TreeInstanceComponent;
+  let fixture: ComponentFixture<TreeInstanceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MenuTreeComponent ]
+      declarations: [ TreeInstanceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MenuTreeComponent);
+    fixture = TestBed.createComponent(TreeInstanceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
