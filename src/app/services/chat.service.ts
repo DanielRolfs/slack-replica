@@ -48,8 +48,8 @@ export class ChatService {
 
   async sendMessage(chatId, content) {
     console.log('Sending message to chat ' + chatId + ': ' + content) ;
-    const user  = await this.auth.getUser();
-    console.log('User is', user);
+    const uid  = await this.auth.getUser();
+    console.log('User is', uid);
     const data = {
       'uid': '',
       'chatId': chatId,
