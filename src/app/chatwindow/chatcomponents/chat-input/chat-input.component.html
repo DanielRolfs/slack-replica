@@ -8,5 +8,5 @@
 
     <textarea class="h-12 w-11/12 bg-[#222529] text-color" matInput placeholder="Nachrichten senden an ..."></textarea>
 
-    <mat-icon class="send flex self-end mr-2">send</mat-icon>
+    <mat-icon class="send flex self-end mr-2" (click)="chatService.sendMessage('chat1', 'Hallo')">send</mat-icon>
 </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
   selector: 'app-chat-input',
@@ -9,7 +10,7 @@ export class ChatInputComponent implements OnInit {
 
 
 somePlaceholder: string = 'new Value';
-  constructor() { }
+  constructor(public chatService: ChatService) { }
 
   ngOnInit(): void {
   }

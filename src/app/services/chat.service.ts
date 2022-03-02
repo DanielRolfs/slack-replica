@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable, combineLatest, of } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/compat/firestore/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 
@@ -47,21 +47,29 @@ export class ChatService {
   }
 
   async sendMessage(chatId, content) {
-    const { uid } = await this.auth.getUser();
-
+    console.log('Sending message to chat ' + chatId + ': ' + content) ;
+    const user  = await this.auth.getUser();
+    console.log('User is', user);
     const data = {
-      uid,
-      content,
-      createdAt: Date.now()
+      'uid': '',
+      'chatId': chatId,
+      'message': content,
+      'createdAt': Date.now()
     };
+    this.afs.collection('messages').add(data);
+    // const data = {
+    //   uid,
+    //   content,
+    //   createdAt: Date.now()
+    // };
 
-    if (uid) {
-      const ref = this.afs.collection('chats').doc(chatId);
-      return ref.update({
-        message: firestore.FieldValue.arrayUnion(data)
-      });
+    // if (uid) {
+    //   const ref = this.afs.collection('chats').doc(chatId);
+    //   return ref.update({
+    //     message: this.afs.FieldValue.arrayUnion(data)
+    //   });
 
-    }
+    // }
   }
 
   joinUsers(chat$: Observable<any>) {
