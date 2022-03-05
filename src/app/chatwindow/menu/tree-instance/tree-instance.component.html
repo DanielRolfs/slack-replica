@@ -1,26 +1,34 @@
 <!-- Visible root nood of the tree-instance -->
 <!-- Contains 1. button for toggle 2. the name/title of the root-node -->
-<div class="container">
+<div class="container h-11 flex items-center justify-between pr-2">
 
-    <!-- Btn: Arrow-icon for toggle -->
-    <button mat-icon-button (click)="toggleTree()">
-        <mat-icon>
-            {{isExpanded ? 'expand_more' : 'chevron_right'}}
-        </mat-icon>
-    </button>
+    <!-- wrapper -->
+    <div class="flex items-center">
+        <!-- Btn: Arrow-icon for toggle -->
+        <button mat-icon-button (click)="toggleTree()">
+            <mat-icon>
+                {{isExpanded ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+        </button>
 
+        <span>{{title}}</span>
 
-    <span>{{title}}</span>
+    </div>
 
     <!-- Btn: For creating new channels/dms -->
     <button *ngIf="createBtnisDisplayed" mat-icon-button (click)="requestOpenDialog.emit()" id="btn-create"
         class="!hidden">
         <mat-icon> add </mat-icon>
     </button>
-
 </div>
 
 <!-- Unvisible Container/List for the li's -->
+<!-- Retrives database => depending on the database (users, channels, ...), data can be displayed on different ways by using *ngIf on a template/container -->
 <ul [class.tree-invisible]="!isExpanded">
-    <li *ngFor="let element of data;">{{element.name ? element.name : element.displayName}}</li>
+    <li *ngFor="let element of database" class="h-9 pl-8 hover:bg-[#27242C]">
+        <a [routerLink]="['/chatwindow/', element.firestoreDocumentId]"
+            class="w-full h-full flex items-center justify-between">
+            {{element.name ? element.name : element.displayName}}
+        </a>
+    </li>
 </ul>
