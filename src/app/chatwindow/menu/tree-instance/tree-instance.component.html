@@ -4,6 +4,7 @@
 
     <!-- wrapper -->
     <div class="flex items-center">
+
         <!-- Btn: Arrow-icon for toggle -->
         <button mat-icon-button (click)="toggleTree()">
             <mat-icon>
@@ -25,7 +26,7 @@
 <!-- Unvisible Container/List for the li's -->
 <!-- Retrives database => depending on the database (users, channels, ...), data can be displayed on different ways by using *ngIf on a template/container -->
 <ul [class.tree-invisible]="!isExpanded" class="mb-5">
-    <li *ngFor="let element of database" [class.is-active]="element.firestoreDocumentId === currentChat" class="h-9 pl-8 hover:bg-[#27242C]">
+    <li *ngFor="let element of database" routerLinkActive="is-active" class="h-8 pl-8 hover:bg-[#27242C]">
         <a [routerLink]="['/chatwindow/', element.firestoreDocumentId]"
             class="w-full h-full flex items-center text-color">
             {{element.name ? element.name : element.displayName}}

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
 
 @Component({
@@ -21,9 +21,6 @@ export class TreeInstanceComponent implements OnInit {
   @Input() createBtnisDisplayed: boolean = true;
   @Output() requestOpenDialog = new EventEmitter();
 
-  /** highlighter */
-  currentChat: string;
-
   constructor(
     private firestore: AngularFirestore,
     private route: ActivatedRoute
@@ -35,10 +32,6 @@ export class TreeInstanceComponent implements OnInit {
       console.log('Tree-Instance-Component is loading: ' +this.firestoreCollectionName, output);
       this.database = output;
     });
-
-    this.route.params.subscribe((result: any) => {
-      this.currentChat = result.id;
-    })
 
   }
 
