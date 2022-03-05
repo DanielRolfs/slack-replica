@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { map, Observable } from 'rxjs';
 
 @Component({
@@ -16,11 +17,17 @@ export class TreeInstanceComponent implements OnInit {
 
   isExpanded: boolean = false; // tree; ul of children tree-node(s)
 
-  /** create-btn */
+  /** create-channel-btn */
   @Input() createBtnisDisplayed: boolean = true;
   @Output() requestOpenDialog = new EventEmitter();
 
-  constructor(private firestore: AngularFirestore) { }
+  /** highlighter */
+  currentChat: string;
+
+  constructor(
+    private firestore: AngularFirestore,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
 
@@ -28,6 +35,10 @@ export class TreeInstanceComponent implements OnInit {
       console.log('Tree-Instance-Component is loading: ' +this.firestoreCollectionName, output);
       this.database = output;
     });
+
+    this.route.params.subscribe((result: any) => {
+      this.currentChat = result.id;
+    })
 
   }
 
@@ -55,11 +66,6 @@ export class TreeInstanceComponent implements OnInit {
           return { firestoreDocumentId, ...data };
         }))
       )
-  }
-
-  addHighlighter(a){
-    console.log(a);
-    
   }
 
 }
