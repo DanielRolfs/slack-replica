@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+// import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';s
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ChatService } from 'src/app/services/chat.service';
+// import 'rxjs/add/operator/map';
 
 
 @Component({
@@ -11,7 +13,7 @@ import { ChatService } from 'src/app/services/chat.service';
   styleUrls: ['./message-send.component.scss']
 })
 export class MessageSendComponent implements OnInit {
-  chat$: Observable<any>;
+  channels$: Observable<any>;
   newMsg: string;
 
   constructor(
@@ -21,13 +23,13 @@ export class MessageSendComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const chatId = this.route.snapshot.paramMap.get('id');
-    const source = this.cs.get(chatId);
-    this.chat$ = this.cs.joinUsers(source);
+    const channelsId = this.route.snapshot.paramMap.get('id');
+    const source = this.cs.get(channelsId);
+    // this.chat$ = this.cs.joinUsers(source);
   }
 
-  submit(chatId) {
-    this.cs.sendMessage(chatId, this.newMsg);
+  submit(channelsId) {
+    this.cs.sendMessage(channelsId, this.newMsg);
     this.newMsg = '';
   }
 

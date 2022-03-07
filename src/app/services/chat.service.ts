@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
-import { Observable, combineLatest, of } from 'rxjs';
+// import { Observable, combineLatest, of } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+// import { AngularFireAuth } from '@angular/fire/compat/auth';
+// import { chatMessages } from '../models/chat-message.model';
 
 
 
@@ -16,13 +18,13 @@ export class ChatService {
 
   constructor(
     private auth: AuthService,
-    private afs: AngularFirestore,
+    private firestore: AngularFirestore,
     private router: Router
   ) { }
 
   get(chatId) {
-    return this.afs
-      .collection<any>('chats')
+    return this.firestore
+      .collection<any>('channels')
       .doc(chatId)
       .snapshotChanges()
       .pipe(
@@ -41,22 +43,22 @@ export class ChatService {
       messages: []
     };
 
-    const docRef = await this.afs.collection('chats').add(data);
+    const docRef = await this.firestore.collection('channels').add(data);
 
-    return this.router.navigate(['chats', docRef.id]);
+    return this.router.navigate(['channels', docRef.id]);
   }
 
   async sendMessage(chatId, content) {
-    console.log('Sending message to chat ' + chatId + ': ' + content) ;
-    const uid  = await this.auth.getUser();
-    console.log('User is', uid);
+    console.log('Sending message to chat ' + chatId + ': ' + content);
+    const users = await this.auth.getUser();
+    console.log('User is', users);
     const data = {
       'uid': '',
       'chatId': chatId,
       'message': content,
       'createdAt': Date.now()
     };
-    this.afs.collection('messages').add(data);
+    this.firestore.collection('channels').add(data);
     // const data = {
     //   uid,
     //   content,
@@ -72,31 +74,31 @@ export class ChatService {
     // }
   }
 
-  joinUsers(chat$: Observable<any>) {
-    let chat;
-    const joinKeys = {};
+  // joinUsers(chat$: Observable<any>) {
+  //   let chat;
+  //   const joinKeys = {};
 
-    return chat$.pipe(
-      switchMap(c => {
-        //Unique user Ids
-        chat = c;
-        const uids = Array.from(new Set(c.messages.map(v => v.uid)));
+  //   return chat$.pipe(
+  //     switchMap(c => {
+  //       //Unique user Ids
+  //       chat = c;
+  //       const uids = Array.from(new Set(c.messages.map(v => v.uid)));
 
-        //Firestore user doc raeds
-        const userDocs = uids.map(u =>
-          this.afs.doc(`users/${u}`).valueChanges()
-        );
+  //       //Firestore user doc raeds
+  //       const userDocs = uids.map(u =>
+  //         this.afs.doc(`users/${u}`).valueChanges()
+  //       );
 
-        return userDocs.length ? combineLatest(userDocs) : of([]);
-      }),
-      map(arr => {
-        arr.forEach(v => (joinKeys[(<any>v).uid] = v));
-        chat.messages = chat.messages.map(v => {
-          return { ...v, user: joinKeys[v.uid] };
-        });
+  //       return userDocs.length ? combineLatest(userDocs) : of([]);
+  //     }),
+  //     map(arr => {
+  //       arr.forEach(v => (joinKeys[(<any>v).uid] = v));
+  //       chat.messages = chat.messages.map(v => {
+  //         return { ...v, user: joinKeys[v.uid] };
+  //       });
 
-        return chat;
-      })
-    )
-  }
+  //       return chat;
+  //     })
+  //   )
+  // }
 }

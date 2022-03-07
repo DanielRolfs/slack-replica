@@ -25,9 +25,10 @@ import { ChatInputComponent } from './chatwindow/chatcomponents/chat-input/chat-
 import { MatButtonModule } from '@angular/material/button';
 import { MatTreeModule } from '@angular/material/tree';
 import { DialogAddChannelComponent } from './dialog-windows/dialog-add-channel/dialog-add-channel.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AngularFireModule } from '@angular/fire/compat';
 import { TreeInstanceComponent } from './chatwindow/menu/tree-instance/tree-instance.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -64,6 +65,7 @@ import { TreeInstanceComponent } from './chatwindow/menu/tree-instance/tree-inst
     MatTreeModule,
     MatDialogModule,
     FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

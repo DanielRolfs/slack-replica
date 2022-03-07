@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ChatService } from 'src/app/services/chat.service';
 import { Channel } from 'src/app/models/channel.class';
 
 @Component({
@@ -10,16 +11,30 @@ import { Channel } from 'src/app/models/channel.class';
 })
 export class DialogAddChannelComponent implements OnInit {
   name: string = '';
+  id: string = '';
 
   channel = new Channel();
 
 
-  constructor(private firestore: AngularFirestore, private dialogRef: MatDialogRef<DialogAddChannelComponent>) { }
+  constructor(
+    private firestore: AngularFirestore,
+    private dialogRef: MatDialogRef<DialogAddChannelComponent>,
+    public chatService: ChatService,) { }
 
   ngOnInit(): void {
   }
+  // create() {
+  //   console.log('Created Channel is', this.channel);
+  //   console.log('Adding channel finished');
 
+  //   setTimeout(() => {
+  //     this.closeDialog();
+  //   })
+
+  // }
   createChannel() {
+
+
     console.log('Created Channel is', this.channel)
 
     this.firestore
