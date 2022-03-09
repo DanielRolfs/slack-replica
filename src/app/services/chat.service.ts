@@ -49,6 +49,8 @@ export class ChatService {
   // }
 
   async sendMessage(name, content) {
+    console.log(name, content);
+    
     console.log('Sending message to chat ' + name + ': ' + content);
     // const users = await this.auth.getUser();
     // console.log('User is', users);
@@ -58,6 +60,8 @@ export class ChatService {
       'message': content,
       'createdAt': Date.now()
     };
+
+    // if property doesnt exist, it is still created and initialized by the value. Else it updates the value
     this.firestore.collection('channels').doc(name).update({messages : content});
 
 

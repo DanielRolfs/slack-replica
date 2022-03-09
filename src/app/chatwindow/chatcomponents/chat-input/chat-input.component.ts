@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { ChatService } from 'src/app/services/chat.service';
 
@@ -13,8 +12,8 @@ export class ChatInputComponent implements OnInit {
 
 
   somePlaceholder: string = 'new Value';
-  firestoreDocumentId: Observable<any>;
-  newMsg: string;
+  firestoreDocumentId: string;
+  newMsg: string = '';
 
   constructor(
     public chatService: ChatService,
@@ -23,13 +22,16 @@ export class ChatInputComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const firestoreDocumentId = this.route.snapshot.paramMap.get('id');
-    const source = this.chatService.get(firestoreDocumentId);
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // this value stays static, care by calling submit/sendMessage. Changing routes, does not update the docId, sendMessage might sent to an old doc
+    this.firestoreDocumentId = this.route.snapshot.paramMap.get('id');
+    
+    const source = this.chatService.get(this.firestoreDocumentId);
     // this.chat$ = this.cs.joinUsers(source);
   }
 
-  submit(firestoreDocumentId) {
-    this.chatService.sendMessage(firestoreDocumentId, this.newMsg);
+  submit() {
+    this.chatService.sendMessage(this.firestoreDocumentId, this.newMsg);
     this.newMsg = '';
   }
 
