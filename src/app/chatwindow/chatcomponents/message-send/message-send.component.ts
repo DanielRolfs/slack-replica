@@ -23,13 +23,13 @@ export class MessageSendComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const channelsId = this.route.snapshot.paramMap.get('id');
-    const source = this.cs.get(channelsId);
+    const firestoreDocumentId = this.route.snapshot.paramMap.get('id');
+    const source = this.cs.get(firestoreDocumentId);
     // this.chat$ = this.cs.joinUsers(source);
   }
 
-  submit(channelsId) {
-    this.cs.sendMessage(channelsId, this.newMsg);
+  submit(firestoreDocumentId) {
+    this.cs.sendMessage(firestoreDocumentId, this.newMsg);
     this.newMsg = '';
   }
 
@@ -38,3 +38,4 @@ export class MessageSendComponent implements OnInit {
   }
 
 }
+

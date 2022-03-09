@@ -6,7 +6,7 @@
         <mat-icon class="code">integration_instructions</mat-icon>
     </div>
 
-    <textarea [(ngModel)]="newMsg" (keydown.enter)="submit(channels$)" class="h-12 w-11/12 bg-[#222529] text-color" matInput placeholder="Nachrichten senden an ..."></textarea>
+    <textarea [(ngModel)]="newMsg" (keydown.enter)="submit(firestoreDocumentId)" class="h-12 w-11/12 bg-[#222529] text-color" matInput placeholder="Nachrichten senden an ..."></textarea>
 
-    <mat-icon class="send flex self-end mr-2" (click)="chatService.sendMessage('NuseEYIyehnzQcbalB4m', 'Hallo wie gehts dir?')">send</mat-icon>
+    <mat-icon class="send flex self-end mr-2" (click)="chatService.sendMessage(firestoreDocumentId, newMsg)">send</mat-icon>
 </div>

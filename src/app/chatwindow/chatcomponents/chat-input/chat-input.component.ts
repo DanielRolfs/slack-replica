@@ -13,7 +13,7 @@ export class ChatInputComponent implements OnInit {
 
 
   somePlaceholder: string = 'new Value';
-  channels$: Observable<any>;
+  firestoreDocumentId: Observable<any>;
   newMsg: string;
 
   constructor(
@@ -23,13 +23,13 @@ export class ChatInputComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const channelsId = this.route.snapshot.paramMap.get('id');
-    const source = this.chatService.get(channelsId);
+    const firestoreDocumentId = this.route.snapshot.paramMap.get('id');
+    const source = this.chatService.get(firestoreDocumentId);
     // this.chat$ = this.cs.joinUsers(source);
   }
 
-  submit(channelsId) {
-    this.chatService.sendMessage(channelsId, this.newMsg);
+  submit(firestoreDocumentId) {
+    this.chatService.sendMessage(firestoreDocumentId, this.newMsg);
     this.newMsg = '';
   }
 

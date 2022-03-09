@@ -22,10 +22,10 @@ export class ChatService {
     private router: Router
   ) { }
 
-  get(chatId) {
+  get(firestoreDocumentId) {
     return this.firestore
       .collection<any>('channels')
-      .doc(chatId)
+      .doc(firestoreDocumentId)
       .snapshotChanges()
       .pipe(
         map(doc => {
@@ -34,31 +34,33 @@ export class ChatService {
       );
   }
 
-  async create() {
-    const { uid } = await this.auth.getUser();
-    const data = {
-      uid,
-      createdAt: Date.now(),
-      count: 0,
-      messages: []
-    };
+  // async create() {
+  //   const { uid } = await this.auth.getUser();
+  //   const data = {
+  //     uid,
+  //     createdAt: Date.now(),
+  //     count: 0,
+  //     messages: []
+  //   };
 
-    const docRef = await this.firestore.collection('channels').add(data);
+  //   const docRef = await this.firestore.collection('channels').add(data);
 
-    return this.router.navigate(['channels', docRef.id]);
-  }
+  //   return this.router.navigate(['channels', docRef.id]);
+  // }
 
-  async sendMessage(chatId, content) {
-    console.log('Sending message to chat ' + chatId + ': ' + content);
+  async sendMessage(name, content) {
+    console.log('Sending message to chat ' + name + ': ' + content);
     // const users = await this.auth.getUser();
     // console.log('User is', users);
     const data = {
-      'uid': '',
-      'chatId': chatId,
+      // 'uid': '',
+      'chatId': name,
       'message': content,
       'createdAt': Date.now()
     };
-    this.firestore.collection('channels').add(data);
+    this.firestore.collection('channels').doc(name).update({messages : content});
+
+
     // const data = {
     //   uid,
     //   content,
