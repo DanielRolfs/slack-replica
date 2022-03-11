@@ -8,7 +8,7 @@ import { CollectionReference } from "@firebase/firestore";
  * Prototype (inner)-structure of project
  */
 
-class Message {
+export class Message {
     uuidMessage: string; // universal unique identifyer 
     chatid: string; // referenz/verweis auf chat-uuid
 

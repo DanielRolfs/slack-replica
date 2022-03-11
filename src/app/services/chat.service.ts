@@ -62,7 +62,7 @@ export class ChatService {
     };
 
     // if property doesnt exist, it is still created and initialized by the value. Else it updates the value
-    this.firestore.collection('channels').doc(name).update({messages : content});
+    this.firestore.collection('messages').add(data);
 
 
     // const data = {
