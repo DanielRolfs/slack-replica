@@ -12,8 +12,12 @@ export class ChatInputComponent implements OnInit {
 
 
   somePlaceholder: string = 'new Value';
-  firestoreDocumentId: string;
+
+  currentChatId: string;
+
   newMsg: string = '';
+
+
 
   constructor(
     public chatService: ChatService,
@@ -22,16 +26,17 @@ export class ChatInputComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // this value stays static, care by calling submit/sendMessage. Changing routes, does not update the docId, sendMessage might sent to an old doc
-    this.firestoreDocumentId = this.route.snapshot.paramMap.get('id');
-    
-    const source = this.chatService.get(this.firestoreDocumentId);
+
+    this.route.params.subscribe((params) => {
+      this.currentChatId = params['id'];
+    })
+
+    const source = this.chatService.get(this.currentChatId);
     // this.chat$ = this.cs.joinUsers(source);
   }
 
   submit() {
-    this.chatService.sendMessage(this.firestoreDocumentId, this.newMsg);
+    this.chatService.sendMessage(this.currentChatId, this.newMsg);
     this.newMsg = '';
   }
 

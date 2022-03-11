@@ -8,7 +8,7 @@
     <textarea [(ngModel)]="newMsg" (keydown.enter)="submit()" class="h-12 w-11/12 bg-[#222529] text-color" matInput
         placeholder="Nachrichten senden an ..."></textarea>
 
-    <button [disabled]="newMsg.length == 0" (click)="submit()">
+    <button [disabled]="newMsg.length == 0 || currentChatId == '0'" (click)="submit()">
         <mat-icon class="send flex self-end mr-2">send</mat-icon>
     </button>
     

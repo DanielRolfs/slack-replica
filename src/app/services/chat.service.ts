@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { map, switchMap } from 'rxjs/operators';
 // import { Observable, combineLatest, of } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
+import { Message } from '../models/message.model';
 // import { AngularFireAuth } from '@angular/fire/compat/auth';
 // import { chatMessages } from '../models/chat-message.model';
 
@@ -16,15 +18,18 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class ChatService {
 
+  message: Message = new Message();
+
   constructor(
     private auth: AuthService,
     private firestore: AngularFirestore,
     private router: Router
-  ) { }
+  ) {
+  }
 
-  get(firestoreDocumentId) {
+  get(firestoreDocumentId): Observable<object> {
     return this.firestore
-      .collection<any>('channels')
+      .collection<any>('chats')
       .doc(firestoreDocumentId)
       .snapshotChanges()
       .pipe(
@@ -48,22 +53,14 @@ export class ChatService {
   //   return this.router.navigate(['channels', docRef.id]);
   // }
 
-  async sendMessage(name, content) {
-    console.log(name, content);
-    
-    console.log('Sending message to chat ' + name + ': ' + content);
-    // const users = await this.auth.getUser();
-    // console.log('User is', users);
-    const data = {
-      // 'uid': '',
-      'chatId': name,
-      'message': content,
-      'createdAt': Date.now()
-    };
+  async sendMessage(currentChatId: string, content: string) {
 
-    // if property doesnt exist, it is still created and initialized by the value. Else it updates the value
-    this.firestore.collection('messages').add(data);
+    console.log('Sending message to chat ' + currentChatId + ': ' + content);
 
+    this.message.chatId = currentChatId;
+    this.message.content = content;
+
+    this.firestore.collection('messages').add(this.message.toJson());
 
     // const data = {
     //   uid,
