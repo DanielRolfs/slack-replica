@@ -56,14 +56,14 @@ export class RegisterComponent implements OnInit {
               console.log(user.displayName)
               console.log(user.uid);
               console.log('Creating User succssesfull', user.displayName);
-              /* this.firestore.collection('users').add(
+               this.firestore.collection('users').add(
                 {
                   email: this.email,
                   displayName: this.displayName,
                   uid: user.uid,
                   // photoUrl: this.photoUrl,
                 }
-              ); */
+              ); 
               // console.log(user.toJSON());
 
 
