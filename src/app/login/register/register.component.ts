@@ -6,6 +6,7 @@ import { getMaxListeners } from 'process';
 import { user } from 'rxfire/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user.model';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +30,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     public authService: AuthService,
     private router: Router,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private storage: AngularFireStorage
   ) { }
 
   ngOnInit(): void {
@@ -56,14 +58,14 @@ export class RegisterComponent implements OnInit {
               console.log(user.displayName)
               console.log(user.uid);
               console.log('Creating User succssesfull', user.displayName);
-               this.firestore.collection('users').add(
+              this.firestore.collection('users').add(
                 {
                   email: this.email,
                   displayName: this.displayName,
                   uid: user.uid,
-                  // photoUrl: this.photoUrl,
+                  photoUrl: this.photoUrl,
                 }
-              ); 
+              );
               // console.log(user.toJSON());
 
 
@@ -81,7 +83,7 @@ export class RegisterComponent implements OnInit {
         });
 
     }
-   
+
 
   }
 
@@ -92,4 +94,12 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  uploadFile(event) {
+    const file = event.target.files[0];
+    const filePath = '';
+    const task = this.storage.upload(filePath, file);
+    console.log(file.name);
+    
+
+  }
 }

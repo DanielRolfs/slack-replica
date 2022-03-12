@@ -29,6 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AngularFireModule } from '@angular/fire/compat';
 import { TreeInstanceComponent } from './chatwindow/menu/tree-instance/tree-instance.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 
 
 
@@ -65,9 +66,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatTreeModule,
     MatDialogModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireStorageModule
   ],
-  providers: [],
+  providers: [{ provide: BUCKET, useValue: 'my-bucket-name' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
