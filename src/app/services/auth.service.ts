@@ -33,13 +33,13 @@ export class AuthService {
     // );
   }
 
-  createUser(email, password): Promise<any> {
+  createUser(email, password) {
 
     return this.auth.createUserWithEmailAndPassword(email, password);
       
   }
 
-  signIn(email: string, password: string): Promise <any> {
+  signIn(email: string, password: string) {
 
     return this.auth.signInWithEmailAndPassword(email, password)
       

@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
 
   // email = new FormControl('', [Validators.required, Validators.email]);
-
+ 
   email: string;
   password: string;
 
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
         let user = userCredential.user;
         // ...
         this.router.navigateByUrl('chatwindow/')
-        
+
         console.log('Sign-in successfull!');
         console.log('User: ', user.displayName, user.uid);
 
@@ -44,12 +45,4 @@ export class LoginComponent implements OnInit {
       });;
   }
 
-
-  // getErrorMessage() {
-  //   if (this.email.hasError('required')) {
-  //     return 'You must enter an email';
-  //   }
-
-  //   return this.email.hasError('email') ? 'Not a valid email' : '';
-  // }
 }
