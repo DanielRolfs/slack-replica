@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { getMaxListeners } from 'process';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  displayName: string;
+  email: string;
+  password: string;
+  
+
+  constructor(
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
+    
+  }
+
+  register() {
+    this.authService.createUser(this.email, this.password); 
   }
 
 }

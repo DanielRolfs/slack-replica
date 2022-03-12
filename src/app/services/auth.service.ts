@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import firebase from 'firebase/compat/app';
+// import firebase from 'firebase/compat/app';
 import { first, switchMap } from 'rxjs/operators';
-import { GoogleAuthProvider } from '@angular/fire/auth';
 import { Observable, of } from 'rxjs';
+import * as firebase from 'firebase/compat';
+import { getMaxListeners } from 'process';
+
 
 
 @Injectable({
@@ -13,52 +15,71 @@ import { Observable, of } from 'rxjs';
 })
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  user$: Observable<any>;
+  // user$: Observable<any>;
 
   constructor(
-    private afAuth: AngularFireAuth,
+    private auth: AngularFireAuth,
     private firestore: AngularFirestore,
     private router: Router
   ) {
-    this.user$ = this.afAuth.authState.pipe(
-      switchMap(user => {
-        if (user) {
-          return this.firestore.doc<any>(`users/${user.uid}`).valueChanges();
-        } else {
-          return of(null);
-        }
+    // this.user$ = this.auth.authState.pipe(
+    //   switchMap(user => {
+    //     if (user) {
+    //       return this.firestore.doc<any>(`users/${user.uid}`).valueChanges();
+    //     } else {
+    //       return of(null);
+    //     }
+    //   })
+    // );
+  }
+
+  createUser(email, password) {
+
+    this.auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Signed in 
+        var user = userCredential.user;
+        console.log('Creating User succssesfull' + userCredential.user);
+        
+        
       })
-    );
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ..
+      });
   }
 
-  getUser() {
-    return this.user$.pipe(first()).toPromise();
-  }
 
-  googleSignIn() {
-    const provider = new GoogleAuthProvider();
-    return this.oAuthLogin(provider);
-  }
+  // getUser() {
+  //   return this.user$.pipe(first()).toPromise();
+  // }
 
-  private async oAuthLogin(provider: firebase.auth.AuthProvider) {
-    const credential = await this.afAuth.signInWithPopup(provider);
-    return this.updateUserData(credential.user);
-  }
+  // googleSignIn() {
+  //   const provider = new GoogleAuthProvider();
+  //   return this.oAuthLogin(provider);
+  // }
 
-  private updateUserData({ uid, email, displayName, photoURL }) {
-    const userRef: AngularFirestoreDocument<any> = this.firestore.doc(`user/${uid}`);
-    const data = {
-      uid,
-      email,
-      displayName,
-      photoURL
-    };
+  // private async oAuthLogin(provider: firebase.auth.AuthProvider) {
+  //   const credential = await this.afAuth.signInWithPopup(provider);
+  //   return this.updateUserData(credential.user);
+  // }
 
-    return userRef.set(data, { merge: true });
-  }
+  // private updateUserData({ uid, email, name, photoURL, password }) {
+  //   const userRef: AngularFirestoreDocument<any> = this.firestore.doc(`user/${uid}`);
+  //   const data = {
+  //     uid,
+  //     email,
+  //     name,
+  //     photoURL,
+  //     password
+  //   };
 
-  async signOut() {
-    await this.afAuth.signOut();
-    return this.router.navigate(['/']);
-  }
+  //   return userRef.set(data, { merge: true });
+  // }
+
+  // async signOut() {
+  //   await this.afAuth.signOut();
+  //   return this.router.navigate(['/']);
+  // }
 }

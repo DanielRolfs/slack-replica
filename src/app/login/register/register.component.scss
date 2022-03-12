@@ -1,0 +1,12 @@
+.main {
+ background-color: gray;
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+
+ input{
+     margin: 25px;
+ }
+}
