@@ -38,17 +38,16 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.callFirebase = true;
-    this.validateUserNameInput();
 
+    this.errorMessage = '';
+
+    this.validateUserNameInput();
 
     if (this.callFirebase) {
       this.authService.createUser(this.email, this.password)
         .then((userCredential) => {
           // Signed in 
           let user = userCredential.user;
-
-
-
 
           user.updateProfile({
             displayName: this.displayName,
@@ -57,14 +56,14 @@ export class RegisterComponent implements OnInit {
               console.log(user.displayName)
               console.log(user.uid);
               console.log('Creating User succssesfull', user.displayName);
-              this.firestore.collection('users').add(
+              /* this.firestore.collection('users').add(
                 {
                   email: this.email,
                   displayName: this.displayName,
                   uid: user.uid,
                   // photoUrl: this.photoUrl,
                 }
-              );
+              ); */
               // console.log(user.toJSON());
 
 
@@ -82,7 +81,7 @@ export class RegisterComponent implements OnInit {
         });
 
     }
-    this.errorMessage = '';
+   
 
   }
 
