@@ -11,11 +11,12 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  displayName: string;
+  displayName: string = '';
   email: string;
   password: string;
 
-  errorMessage: undefined;
+  errorMessage: string;
+  callFirebase: boolean = true;
 
   constructor(
     public authService: AuthService,
@@ -27,13 +28,15 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.authService.createUser(this.email, this.password)
+    this.callFirebase = true;
+    this.validateUserNameInput();
 
+
+    if (this.callFirebase) {
+    this.authService.createUser(this.email, this.password)
       .then((userCredential) => {
         // Signed in 
         let user = userCredential.user;
-
-        this.router.navigateByUrl('');
 
         user.updateProfile({
           displayName: this.displayName
@@ -41,8 +44,10 @@ export class RegisterComponent implements OnInit {
           .then(() => {
             console.log(user.displayName)
             console.log(user.uid);
-
             console.log('Creating User succssesfull', user.displayName)
+            if (!this.errorMessage){
+              this.router.navigateByUrl('');
+              }
           })
 
       })
@@ -50,6 +55,17 @@ export class RegisterComponent implements OnInit {
         this.errorMessage = error.message;
         // ...
       });
+      
+    }
+    this.errorMessage = '';
   }
+
+  validateUserNameInput(){
+    if (this.displayName.length < 3 || this.displayName.length == 0) {
+      this.errorMessage = 'Please fill in user name';
+      this.callFirebase = false;
+    }
+  }
+  
 
 }
