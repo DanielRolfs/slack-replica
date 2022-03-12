@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    this.authService.createUser(this.email, this.password); 
+    this.authService.createUser(this.displayName, this.email, this.password); 
   }
 
 }

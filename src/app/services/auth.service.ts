@@ -33,13 +33,21 @@ export class AuthService {
     // );
   }
 
-  createUser(email, password) {
+  createUser(displayName, email, password) {
 
     this.auth.createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         // Signed in 
-        var user = userCredential.user;
-        console.log('Creating User succssesfull' + userCredential.user);
+        let user = userCredential.user;
+        console.log('Creating User succssesfull' + user);
+        
+        user.updateProfile({
+          displayName: displayName
+        })
+        .then(() => {
+          console.log(user.displayName)
+        }) 
+        
         
         
       })
