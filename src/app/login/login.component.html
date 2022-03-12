@@ -6,7 +6,7 @@
         </div>
         <div class="mt-20 w-3/12 flex flex-col items-center">
             <div>
-                <input type="email" class="email h-12 p-4 mb-4 rounded-md bg-transparent"
+                <input [(ngModel)]="email" type="email" class="email h-12 p-4 mb-4 rounded-md bg-transparent"
                     placeholder="name@work-email.com" required>
                 <!-- <mat-form-field appearance="outline" class="w-full">
                     <mat-label>Enter your email</mat-label>
@@ -15,21 +15,24 @@
                 </mat-form-field> -->
             </div>
             <div class="password-field">
-                <input type="password" [type]="hide ? 'password' : 'text'"
+                <input [(ngModel)]="password" type="password" [type]="hide ? 'password' : 'text'"
                     class="password h-12 p-4 mb-4 rounded-md bg-transparent" placeholder="Please enter password"
                     required>
                 <!-- <mat-form-field appearance="outline" class="w-full">
                     <mat-label>Enter your password</mat-label> -->
                 <!-- <input class="password" matInput [type]="hide ? 'password' : 'text'"> -->
-                <button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                    [attr.aria-pressed]="hide">
+                <button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 <!-- </mat-form-field> -->
             </div>
         </div>
+
+        <!-- Error Message Container -->
+        <div [class.invisible]="!(this.errorMessage)" style="color:red; height: fit-content; margin-bottom: 12px;">{{errorMessage}}</div>
+
         <div class="flex flex-col items-center">
-            <button mat-flat-button class="login" routerLink="/chatwindow/0">Login</button>
+            <button (click)="login()" mat-flat-button class="login">Login</button>
             <a routerLink="/register/">Register</a>
         </div>
     </div>

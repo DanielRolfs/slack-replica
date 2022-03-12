@@ -7,6 +7,7 @@ import { first, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import * as firebase from 'firebase/compat';
 import { getMaxListeners } from 'process';
+import { UserCredential } from 'firebase/auth';
 
 
 
@@ -19,8 +20,7 @@ export class AuthService {
 
   constructor(
     private auth: AngularFireAuth,
-    private firestore: AngularFirestore,
-    private router: Router
+    private firestore: AngularFirestore
   ) {
     // this.user$ = this.auth.authState.pipe(
     //   switchMap(user => {
@@ -33,29 +33,16 @@ export class AuthService {
     // );
   }
 
-  createUser(displayName, email, password) {
+  createUser(email, password): Promise<any> {
 
-    this.auth.createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Signed in 
-        let user = userCredential.user;
-        console.log('Creating User succssesfull' + user);
-        
-        user.updateProfile({
-          displayName: displayName
-        })
-        .then(() => {
-          console.log(user.displayName)
-        }) 
-        
-        
-        
-      })
-      .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ..
-      });
+    return this.auth.createUserWithEmailAndPassword(email, password);
+      
+  }
+
+  signIn(email: string, password: string): Promise <any> {
+
+    return this.auth.signInWithEmailAndPassword(email, password)
+      
   }
 
 
