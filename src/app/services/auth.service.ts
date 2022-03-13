@@ -16,7 +16,8 @@ import { UserCredential } from 'firebase/auth';
 })
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  // user$: Observable<any>;
+
+  currentUser;
 
   constructor(
     private auth: AngularFireAuth,
@@ -31,6 +32,16 @@ export class AuthService {
     //     }
     //   })
     // );
+
+    // Listening to auth-state
+    this.auth.authState.subscribe((user) => { // wie lange hält eine signIn
+      if (user) {
+        this.currentUser = user;
+      } else {
+        // user signedOut
+        // ...
+      }
+    });
   }
 
   createUser(email: string, password: string) {
