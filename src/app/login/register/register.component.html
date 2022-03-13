@@ -1,6 +1,6 @@
 <div class="main">
 
-    <img class="w-32 h-32" src="{{this.photoUrl}}" alt="">
+    <img *ngIf ='this.photoUrl !== ""' class="w-32 h-32" src="{{this.photoUrl}}" alt="">
     
     <input [(ngModel)]="displayName" type="name" placeholder="name">
     <input [(ngModel)]="email" type="email" placeholder="email">
