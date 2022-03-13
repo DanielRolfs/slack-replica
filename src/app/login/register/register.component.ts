@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/models/user.model';
+import { CostumUser } from 'src/app/models/user.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
@@ -12,22 +12,20 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 })
 export class RegisterComponent implements OnInit {
 
-  displayName: string = '';
   email: string;
   password: string;
-  photoUrl: string = '';
 
-  user = new User;
+  user = new CostumUser();
 
+  displayName: string = '';
+  photoURL: string = '';
 
-
+  // validation
   errorMessage: string;
   callFirebase: boolean = true;
 
   constructor(
     public authService: AuthService,
-    private router: Router,
-    private firestore: AngularFirestore,
     private storage: AngularFireStorage
   ) { }
 
@@ -43,34 +41,21 @@ export class RegisterComponent implements OnInit {
     this.validateUserNameInput();
 
     if (this.callFirebase) {
+
       this.authService.createUser(this.email, this.password)
         .then((userCredential) => {
-          // Signed in 
+          // Signed in
           let user = userCredential.user;
 
           user.updateProfile({
             displayName: this.displayName,
+            photoURL: this.photoURL,
           })
             .then(() => {
-              console.log(user.displayName)
-              console.log(user.uid);
-              console.log('Creating User succssesfull', user.displayName);
-
-              // after signing up and updating the local-running current-signed-in-user-object by the displayName, we are adding the user and his info to the collection 
-              this.firestore.collection('users').add(
-                {
-                  email: this.email,
-                  displayName: this.displayName,
-                  uid: user.uid,
-                  photoUrl: this.photoUrl,
-                }
-              );
-
-              if (!this.errorMessage) {
-                this.router.navigateByUrl('');
-              }
+              this.authService.addUserToFirestoreCollection(user).then(() => {
+                console.log('Registrierung erfolgreich! Benutzerkonto und Dokument im Firestore in der Sammlung "users" wurden erstellt.');
+              });
             })
-
         })
         .catch((error) => {
           this.errorMessage = error.message;
@@ -95,7 +80,7 @@ export class RegisterComponent implements OnInit {
    */
   uploadFile(event): void {
 
-    this.photoUrl = '';
+    // this.photoUrl = '';
 
     const file = event.target.files[0];
 
@@ -106,7 +91,9 @@ export class RegisterComponent implements OnInit {
       // after uploading a file to the storage, we would like to get the image-url of it & save it to our user-info, representing his profile-picture.
       task.task.snapshot.ref.getDownloadURL().then((imageUrl: string) => {
         console.log(imageUrl);
-        this.photoUrl = imageUrl;
+        this.photoURL = imageUrl;
+        console.log(this.photoURL);
+
       })
 
       task.percentageChanges().subscribe((percentage: number) => {

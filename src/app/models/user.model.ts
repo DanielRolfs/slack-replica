@@ -1,26 +1,36 @@
-export class User {
-    uid?: string; // uuidUser
-    email?: string;
-    displayName?: string;
-    photoURL?: string;
-    status?: string;
+export class CostumUser {
 
+    uid: string;
+    email: string;
+    status: boolean;
+    photoURL: string;
+    displayName: string;
+    emailVerified: boolean
 
-    constructor(obj?: any) {
-        this.displayName = obj ? obj.name : '';
-        this.uid = '" "';
-        this.email = obj ? obj.email : '';
-        this.photoURL= obj ? obj.photoURL : '';
-        this.status = obj ? obj.status : '';
+    constructor(
+        uid?: string,
+        email?: string,
+        status?: boolean,
+        photoURL?: string,
+        displayName?: string,
+        emailVerified?: boolean,
+    ) {
+        this.uid = uid ? uid : '';
+        this.email = email ? email : '';
+        this.status = status ? status : false;
+        this.photoURL = photoURL ? photoURL : '';
+        this.displayName = displayName ? displayName : '';
+        this.emailVerified = emailVerified ? emailVerified : false;
     }
 
     toJSON() {
         return {
-            displayName: this.displayName,
             uid: this.uid,
             email: this.email,
-            photoURL: this.photoURL,
             status: this.status,
+            photoURL: this.photoURL,
+            displayName: this.displayName,
+            emailVerified: this.emailVerified,
         }
     }
 }
