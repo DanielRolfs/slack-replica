@@ -21,25 +21,17 @@ export class AuthService {
 
   constructor(
     private auth: AngularFireAuth,
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private router: Router
   ) {
-    // this.user$ = this.auth.authState.pipe(
-    //   switchMap(user => {
-    //     if (user) {
-    //       return this.firestore.doc<any>(`users/${user.uid}`).valueChanges();
-    //     } else {
-    //       return of(null);
-    //     }
-    //   })
-    // );
-
-    // Listening to auth-state
-    this.auth.authState.subscribe((user) => { // wie lange hält eine signIn
+    // Listening to signedIn/signedOut User
+    this.auth.authState.subscribe((user) => {
       if (user) {
+        console.log('User signedIn!', user);
         this.currentUser = user;
+        this.router.navigate(['chatwindow/0']);
       } else {
-        // user signedOut
-        // ...
+        console.log('User successfully signed out!');
       }
     });
   }
@@ -51,7 +43,6 @@ export class AuthService {
   signIn(email: string, password: string) {
     return this.auth.signInWithEmailAndPassword(email, password);
   }
-
 
   // getUser() {
   //   return this.user$.pipe(first()).toPromise();
@@ -80,8 +71,10 @@ export class AuthService {
   //   return userRef.set(data, { merge: true });
   // }
 
-  // async signOut() {
-  //   await this.afAuth.signOut();
-  //   return this.router.navigate(['/']);
-  // }
+  signOut() {
+    this.auth.signOut().then(() => {
+      this.router.navigate(['']);
+    })
+  }
+
 }

@@ -5,13 +5,17 @@
     <div class="border border-[#2B2A2F] h-12 flex justify-start items-center pl-4">
 
         <!-- menu-header-title -->
-        <span
-            class="h-5 text-lg text-color text-ellipsis flex justify-center items-center">Slack-Replication</span>
+        <span class="h-5 text-lg text-color text-ellipsis flex justify-center items-center">Slack-Replication</span>
 
     </div>
 
     <!-- menu-tree -->
-    <app-tree-instance [title]="'Channels'" [firestoreCollectionName]="'chats'" (requestOpenDialog)="openDialogCreateNewChannel()"></app-tree-instance>
-    <app-tree-instance [title]="'Direct Massages'" [firestoreCollectionName]="'users'" [createBtnisDisplayed]="false"></app-tree-instance>
+    <app-tree-instance [title]="'Channels'" [firestoreCollectionName]="'chats'"
+        (requestOpenDialog)="openDialogCreateNewChannel()"></app-tree-instance>
+    <app-tree-instance [title]="'Direct Massages'" [firestoreCollectionName]="'users'" [createBtnisDisplayed]="false">
+    </app-tree-instance>
 
+
+    <!-- signOut btn -->
+    <span (click)="authService.signOut()" style="color: red"> Sign Out</span>
 </div>

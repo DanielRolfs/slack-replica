@@ -3,6 +3,7 @@ import { DialogAddChannelComponent } from 'src/app/dialog-windows/dialog-add-cha
 import { MatDialog } from '@angular/material/dialog';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { map, Observable } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +12,10 @@ import { map, Observable } from 'rxjs';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public authService : AuthService
+  ) { }
 
   ngOnInit(): void {
 
