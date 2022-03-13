@@ -95,6 +95,8 @@ export class RegisterComponent implements OnInit {
    */
   uploadFile(event): void {
 
+    this.photoUrl = '';
+
     const file = event.target.files[0];
 
     if (file) {
