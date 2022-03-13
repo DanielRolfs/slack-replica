@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { User } from 'firebase/auth';
+import { DocumentSnapshot } from 'rxfire/firestore/interfaces';
+import { Observable } from 'rxjs';
 import { CostumUser } from '../models/user.model';
 
 @Injectable({
@@ -75,14 +77,29 @@ export class AuthService {
    * Sets & Updates the user-status, by updating the property within the user-doc
    * @param firestoreDocumentId - The document-id of the user-document in the firestore collection "users" => to get access
    */
-  isOnline(firestoreDocumentId: string) {
-    this.firestore
+  isOnline(firestoreDocumentId: string): void {
+    this.getDocumentByIdInFirestore(firestoreDocumentId)
+      .subscribe((doc) => {
+        const isAlreadyRegistered = doc.exists;
+        if (isAlreadyRegistered) {
+          this.firestore
+            .collection('users')
+            .doc(firestoreDocumentId)
+            .update({ 'status': true })
+            .then(() => {
+              console.log('User Status was updated! The user is online');
+            })
+        } else {
+          console.log('This is a Message from the "auth.service.ts": The user is registering new for the 1st time! Dont execute this logic and the funtion isOnline().');
+        }
+      })
+  }
+
+  getDocumentByIdInFirestore(firestoreDocumentId) {
+    return this.firestore
       .collection('users')
       .doc(firestoreDocumentId)
-      .update({ 'status': true })
-      .then(() => {
-        console.log('User Status was updated! The user is online');
-      })
+      .get()
   }
 
   /**
@@ -90,7 +107,7 @@ export class AuthService {
    * By dafault and first-loading page there is no user of course => prevent by Fallback and condition
    * @param firestoreDocumentId - The document-id of the user-document in the firestore collection "users" => to get access
    */
-  isOffline(firestoreDocumentId: string) {
+  isOffline(firestoreDocumentId: string): void {
     if (firestoreDocumentId != '') {
       this.firestore
         .collection('users')
@@ -100,7 +117,7 @@ export class AuthService {
           console.log('User Status was updated! The user is offline');
         })
     } else {
-      console.log('This is a Message from the "auth.service.ts": The website is loading for the 1st time! Dont execute this logic and funtion the isOffline().');
+      console.log('This is a Message from the "auth.service.ts": The website is loading for the 1st time! Dont execute this logic and the funtion isOffline().');
     }
   }
 
