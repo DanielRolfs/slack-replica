@@ -48,17 +48,9 @@ export class TreeInstanceComponent implements OnInit {
    * @returns {Observable <object[]>} - The collection we want
    */
   getCollection(collectionName: string): Observable<object[]> {
-
     return this.firestore
       .collection(collectionName)
-      .snapshotChanges()
-      .pipe(
-        map(actions => actions.map(a => {
-          const data = a.payload.doc.data() as Object;
-          const firestoreDocumentId = a.payload.doc.id;
-          return { firestoreDocumentId, ...data };
-        }))
-      )
+      .valueChanges({ idField: 'firestoreDocumentId' });
   }
 
 }

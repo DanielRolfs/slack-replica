@@ -4,7 +4,6 @@
     <input [(ngModel)]="email" type="email" placeholder="email">
     <input [(ngModel)]="password" type="password" placeholder="password">
     <input (change)="uploadFile($event)" type="file">
-    <button>Upload</button>
 
     <!-- Error Message Container -->
     <div [class.invisible]="!this.errorMessage" style="color:red; height: fit-content; margin-bottom: 12px;">

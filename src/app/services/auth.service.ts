@@ -33,16 +33,12 @@ export class AuthService {
     // );
   }
 
-  createUser(email, password) {
-
+  createUser(email: string, password: string) {
     return this.auth.createUserWithEmailAndPassword(email, password);
-      
   }
 
   signIn(email: string, password: string) {
-
-    return this.auth.signInWithEmailAndPassword(email, password)
-      
+    return this.auth.signInWithEmailAndPassword(email, password);
   }
 
 

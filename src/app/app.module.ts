@@ -29,7 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AngularFireModule } from '@angular/fire/compat';
 import { TreeInstanceComponent } from './chatwindow/menu/tree-instance/tree-instance.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 
 
@@ -69,7 +69,7 @@ import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
     HttpClientModule,
     AngularFireStorageModule
   ],
-  providers: [{ provide: BUCKET, useValue: 'my-bucket-name' }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { getMaxListeners } from 'process';
-import { user } from 'rxfire/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user.model';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
@@ -58,6 +55,8 @@ export class RegisterComponent implements OnInit {
               console.log(user.displayName)
               console.log(user.uid);
               console.log('Creating User succssesfull', user.displayName);
+
+              // after signing up and updating the local-running current-signed-in-user-object by the displayName, we are adding the user and his info to the collection 
               this.firestore.collection('users').add(
                 {
                   email: this.email,
@@ -66,20 +65,15 @@ export class RegisterComponent implements OnInit {
                   photoUrl: this.photoUrl,
                 }
               );
-              // console.log(user.toJSON());
-
 
               if (!this.errorMessage) {
                 this.router.navigateByUrl('');
               }
             })
 
-
-
         })
         .catch((error) => {
           this.errorMessage = error.message;
-          // ...
         });
 
     }
@@ -94,12 +88,28 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  uploadFile(event) {
-    const file = event.target.files[0];
-    const filePath = '';
-    const task = this.storage.upload(filePath, file);
-    console.log(file.name);
-    
+  /**
+   * This function is called, whenever the value of the input-field from the type "file" changes.
+   * In other words, whenever the user chooeses and submits a file.
+   * @param event - An event, where we can get the file from an input.
+   */
+  uploadFile(event): void {
 
+    const file = event.target.files[0];
+
+    if (file) {
+      const filePath = 'images/' + file.name;
+      const task = this.storage.upload(filePath, file);
+
+      // after uploading a file to the storage, we would like to get the image-url of it & save it to our user-info, representing his profile-picture.
+      task.task.snapshot.ref.getDownloadURL().then((imageUrl: string) => {
+        console.log(imageUrl);
+        this.photoUrl = imageUrl;
+      })
+
+      task.percentageChanges().subscribe((percentage: number) => {
+        console.log((percentage) + '%');
+      });
+    }
   }
 }

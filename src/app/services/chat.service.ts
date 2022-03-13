@@ -60,6 +60,7 @@ export class ChatService {
     this.message.chatId = currentChatId;
     this.message.content = content;
 
+    // adding Message to "messages" collection
     this.firestore.collection('messages').add(this.message.toJson());
 
     // const data = {
