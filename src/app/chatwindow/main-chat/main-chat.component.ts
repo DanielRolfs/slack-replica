@@ -40,7 +40,7 @@ export class MainChatComponent implements OnInit {
       const items: Reference[] = listResult.items;
       items.forEach((itemRef: Reference) => {
         itemRef.getDownloadURL().then((sourceUrl: string) => {
-          console.log(sourceUrl);
+          // ...
         })
       })
     })

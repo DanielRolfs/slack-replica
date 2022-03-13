@@ -29,7 +29,6 @@ export class TreeInstanceComponent implements OnInit {
   ngOnInit(): void {
 
     this.getCollection(this.firestoreCollectionName).subscribe((output: object[]) => {
-      console.log('Tree-Instance-Component is loading: ' + this.firestoreCollectionName, output);
       this.database = output;
     });
 
