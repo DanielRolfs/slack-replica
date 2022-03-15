@@ -63,7 +63,9 @@ export class TreeInstanceComponent implements OnInit {
 
   createDirectmassage(selectedUser) {
 
-    let data = {users: [selectedUser, this.authService.currentUser]};
+    let data = {users: [selectedUser, this.authService.currentUser.uid]};
+    console.log(data);
+    
 
     //console.log('Created DirectmessageChannel is', this.channel)
     
