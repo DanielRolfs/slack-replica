@@ -25,7 +25,7 @@ export class TreeInstanceComponent implements OnInit {
   constructor(
     private firestore: AngularFirestore,
     private route: ActivatedRoute,
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -54,21 +54,20 @@ export class TreeInstanceComponent implements OnInit {
       .valueChanges({ idField: 'firestoreDocumentId' });
   }
 
-// If first click on this user, then create new directmessage colletion with current user and selected user -> and display it´s currently non existent content.
-// If click on this user, then show directmessage collection with current user and selected user, and display it´s content.
-  startDirectMessage(selectedUser){
+  // If first click on this user, then create new directmessage colletion with current user and selected user -> and display it´s currently non existent content.
+  // If click on this user, then show directmessage collection with current user and selected user, and display it´s content.
+  startDirectMessage(selectedUser) {
     this.createDirectmassage(selectedUser);
   }
 
-
   createDirectmassage(selectedUser) {
 
-    let data = {users: [selectedUser, this.authService.currentUser.uid]};
+    let data = { users: [selectedUser, this.authService.currentUser.uid] };
     console.log(data);
-    
+
 
     //console.log('Created DirectmessageChannel is', this.channel)
-    
+
     this.firestore
       .collection('directmessages')
       .add(data)
