@@ -21,7 +21,7 @@ export class ChatService {
   message: Message = new Message();
 
   constructor(
-    private auth: AuthService,
+    private authService: AuthService,
     private firestore: AngularFirestore,
     private router: Router
   ) {
@@ -59,6 +59,7 @@ export class ChatService {
 
     this.message.chatId = currentChatId;
     this.message.content = content;
+    this.message.author = this.authService.currentUser.uid;
 
     // adding Message to "messages" collection
     this.firestore.collection('messages').add(this.message.toJson());

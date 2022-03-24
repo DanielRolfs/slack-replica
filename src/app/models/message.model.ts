@@ -2,13 +2,13 @@ export class Message {
 
     chatId: string; // referenz/verweis auf chat-uuid
     content: string;
-
-    userId: string;
+    author: string;
 
     toJson() {
         return {
             chatId: this.chatId,
-            content: this.content
+            content: this.content,
+            author: this.author
         }
     }
 }

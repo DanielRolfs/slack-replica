@@ -17,11 +17,6 @@ export class MainChatComponent implements OnInit {
 
   currentChatId: string;
 
-  imagesChache: object[] = [
-    { 'uuiUiser': 'downloadUrl' },
-    { 'hvlIJoNAl8ccwcgo07gaT96Kw4k2': 'https://firebasestorage.googleapis.com/v0/b/slack-replica.appspot.com/o/images%2Fballoon-5307204_1920.jpg?alt=media&token=e644d22c-ceba-4842-90de-a1e2410dc05a' }
-  ];
-
   constructor(
     private firestore: AngularFirestore,
     private route: ActivatedRoute,
