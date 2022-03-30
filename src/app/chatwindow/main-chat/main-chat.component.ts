@@ -5,6 +5,7 @@ import { ListResult, Reference } from '@angular/fire/compat/storage/interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Message } from 'src/app/models/message.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-main-chat',
@@ -13,36 +14,45 @@ import { Message } from 'src/app/models/message.model';
 })
 export class MainChatComponent implements OnInit {
 
-  messages: Observable<any[]>;
+  messages: any[];
 
   currentChatId: string;
-
-  imagesChache: object[] = [
-    { 'uuiUiser': 'downloadUrl' },
-    { 'hvlIJoNAl8ccwcgo07gaT96Kw4k2': 'https://firebasestorage.googleapis.com/v0/b/slack-replica.appspot.com/o/images%2Fballoon-5307204_1920.jpg?alt=media&token=e644d22c-ceba-4842-90de-a1e2410dc05a' }
-  ];
 
   constructor(
     private firestore: AngularFirestore,
     private route: ActivatedRoute,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
 
     this.route.params.subscribe((params) => {
       this.currentChatId = params['id'];
-      this.messages = this.firestore.collection('messages', ref => ref.where('chatId', '==', this.currentChatId)).valueChanges({ idField: 'uuidMessage' });
+
+      // detecting, whether clicked chat-document in the firestore-collection "chats" is a public group chat or a private direct message
+      this.firestore.collection('chats').doc(this.currentChatId).get()
+        .subscribe((docSnap) => {
+
+          const chatType = docSnap.get('type'); // 'channels' || undefined; eigentlich könnte man auch nur if(docSnap.exists) machen, weil durch du doc-id Zugriff auf chats collection versucht wird, aber dann wäre die Logik indirekt zu entschlüsseln
+
+          if (chatType == 'channels') {
+            // Get messages of a group chat
+            this.firestore.collection('messages', ref => ref.where('chatId', '==', this.currentChatId).orderBy('createdAt', 'asc'))
+              .valueChanges({ idField: 'uuidMessage' })
+              .subscribe((queriedMessages: any) => {
+                this.messages = queriedMessages;
+              });
+          } else {
+            // Get messages of a private chat
+            this.firestore.collection('messages', ref => ref.where('chatId', 'in', [this.currentChatId, this.authService.currentUser.uid]).orderBy('createdAt', 'asc'))
+              .valueChanges({ idField: 'uuidMessage' })
+              .subscribe((queriedMessages: any) => {
+                this.messages = queriedMessages.filter(message => message.author == this.authService.currentUser.uid || message.author == this.currentChatId);
+              });
+          }
+        })
     })
 
-    // this code-block is responsible for console-logging out all image-url's (src-url), that are stored in the Firebase/Storage.
-    this.storage.ref('images').listAll().subscribe((listResult: ListResult) => {
-      const items: Reference[] = listResult.items;
-      items.forEach((itemRef: Reference) => {
-        itemRef.getDownloadURL().then((sourceUrl: string) => {
-          // ...
-        })
-      })
-    })
   }
 }

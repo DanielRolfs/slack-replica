@@ -17,12 +17,10 @@ export class ChatInputComponent implements OnInit {
 
   newMsg: string = '';
 
-
-
   constructor(
     public chatService: ChatService,
     private route: ActivatedRoute,
-    public auth: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -30,9 +28,7 @@ export class ChatInputComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.currentChatId = params['id'];
     })
-
-    const source = this.chatService.get(this.currentChatId);
-    // this.chat$ = this.cs.joinUsers(source);
+    
   }
 
   submit() {

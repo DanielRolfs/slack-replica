@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   user = new CostumUser();
 
   displayName: string = '';
-  photoURL: string = '';
+  photoURL: string = 'none';
 
   // validation
   errorMessage: string;

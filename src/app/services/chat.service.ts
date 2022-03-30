@@ -21,7 +21,7 @@ export class ChatService {
   message: Message = new Message();
 
   constructor(
-    private auth: AuthService,
+    private authService: AuthService,
     private firestore: AngularFirestore,
     private router: Router
   ) {
@@ -59,6 +59,8 @@ export class ChatService {
 
     this.message.chatId = currentChatId;
     this.message.content = content;
+    this.message.author = this.authService.currentUser.uid;
+    this.message.createdAt = Date.now();
 
     // adding Message to "messages" collection
     this.firestore.collection('messages').add(this.message.toJson());
@@ -105,4 +107,19 @@ export class ChatService {
   //     })
   //   )
   // }
+
+  /**
+   * This function is called, when a new user is new signing up. Therefore we want to create for every single other user.
+   * After the registration, there should be created a conversation each other user in the Application, so they can communicate via dm
+   * This function creates a document in the "directMessages" collection, that represents the conversation between the dialog.
+   * For every other user there is created a (new) document.
+   */
+  createNewDirectMessageConversations(uidOfNewUser: string) {
+    this.firestore.collection('users').get().subscribe((querySnaphot) => {
+      querySnaphot.forEach((doc: any) => {
+        this.firestore.collection('directmessages').add({ users: [doc.data().uid, uidOfNewUser] })
+      })
+    })
+
+  }
 }

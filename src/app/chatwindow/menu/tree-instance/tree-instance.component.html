@@ -26,10 +26,31 @@
 <!-- Unvisible Container/List for the li's -->
 <!-- Retrives database => depending on the database (users, channels, ...), data can be displayed on different ways by using *ngIf on a template/container -->
 <ul [class.tree-invisible]="!isExpanded" class="mb-5">
-    <li *ngFor="let element of database" (click)="startDirectMessage(element.firestoreDocumentId)" routerLinkActive="is-active" class="h-8 pl-8 hover:bg-[#27242C]">
-        <a [routerLink]="['/chatwindow/', element.firestoreDocumentId]"
-            class="w-full h-full flex items-center text-color">
-            {{element.name ? element.name : element.displayName}}
-        </a>
-    </li>
+
+    <div *ngFor="let element of database">
+
+        <li *ngIf="this.authService.currentUser.uid != element.uid" routerLinkActive="is-active"
+            class="h-8 pl-8 hover:bg-[#27242C]">
+
+            <a [routerLink]="['/chatwindow', element.firestoreDocumentId]"
+                class="w-full h-full flex items-center text-color">
+
+                <!-- profile-imgage-wrapper-container -->
+                <div *ngIf="element.photoURL" class="profile-image-wrapper-container">
+
+                    <!-- profile-image -->
+                    <img src="{{(element.photoURL != 'none') ? element.photoURL : 'https://firebasestorage.googleapis.com/v0/b/slack-replica.appspot.com/o/images%2Fballoon-5307204_1920.jpg?alt=media&token=e644d22c-ceba-4842-90de-a1e2410dc05a'}}"
+                        class="profile-image">
+
+                    <!-- status -->
+                    <div [style.backgroundColor]="element.status ? '#2BAC76' : 'rgb(145,145,147)'" class="status"></div>
+
+                </div>
+
+                <!-- chat-name -->
+                {{element.name ? element.name : element.displayName}}
+            </a>
+        </li>
+    </div>
+
 </ul>
